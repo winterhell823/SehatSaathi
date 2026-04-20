@@ -19,6 +19,7 @@ import com.sehatsaathi.R;
 public class LoginActivity extends AppCompatActivity {
 
     private View btnFingerprintLogin;
+    private View btnAccessDashboard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +27,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         btnFingerprintLogin = findViewById(R.id.btnFingerprintLogin);
+        btnAccessDashboard = findViewById(R.id.btnAccessDashboard);
 
         btnFingerprintLogin.setOnClickListener(v -> showBiometricPrompt());
+        btnAccessDashboard.setOnClickListener(v -> {
+            // For now, let's just navigate to HomeActivity
+            Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            finish();
+        });
     }
 
     private void showBiometricPrompt() {
