@@ -12,16 +12,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sehatsaathi.R;
 import com.sehatsaathi.data.local.DatabaseHelper;
+import com.vitalai.ml.FollowUpQuestion;
+import com.vitalai.ml.FollowUpQuestionEngine;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 public class DiagnosisActivity extends AppCompatActivity {
+    
+    private String finalResultSummary = "Contact Dermatitis";
+    private String finalConfidence = "92%";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnosis);
+
+        runDiagnosticEngine();
 
         findViewById(R.id.btnSaveSync).setOnClickListener(v -> {
             saveDiagnosisRecord();
@@ -51,6 +59,28 @@ public class DiagnosisActivity extends AppCompatActivity {
         });
     }
 
+    private void runDiagnosticEngine() {
+        FollowUpQuestionEngine engine = new FollowUpQuestionEngine();
+
+        // Suppose model predicted Contact Dermatitis with 72%
+        engine.start("Contact Dermatitis", 72);
+
+        while (engine.hasMoreQuestions()) {
+            FollowUpQuestion question = engine.getNextQuestion();
+
+            // Show question.getQuestionText() in UI
+            // Show question.getOptions() as buttons / radio buttons
+
+            // Example answer from user:
+            String selectedAnswer = "Yes"; // Note: this is a static mock answer for illustration
+
+            engine.submitAnswer(question, selectedAnswer);
+        }
+
+        finalResultSummary = engine.getFinalSummary();
+        finalConfidence = engine.getCurrentScore() + "%";
+    }
+
     private void saveDiagnosisRecord() {
         try {
             String patientName = getIntent().getStringExtra("PATIENT_NAME");
@@ -66,8 +96,8 @@ public class DiagnosisActivity extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put(DatabaseHelper.COL_UNIQUE_ID, uniqueId);
             values.put(DatabaseHelper.COL_NAME, patientName);
-            values.put(DatabaseHelper.COL_DIAGNOSIS, "Contact Dermatitis");
-            values.put(DatabaseHelper.COL_CONFIDENCE, "92%");
+            values.put(DatabaseHelper.COL_DIAGNOSIS, finalResultSummary);
+            values.put(DatabaseHelper.COL_CONFIDENCE, finalConfidence);
             values.put(DatabaseHelper.COL_DATE, dateStr);
             
             long result = db.insert(DatabaseHelper.TABLE_PATIENTS, null, values);

@@ -1,0 +1,130 @@
+name: Android CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'vitalai-android/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'vitalai-android/**'
+
+jobs:
+  lint-and-test:
+    name: Lint and Unit Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        working-directory: vitalai-android
+        run: chmod +x gradlew
+
+      - name: Run lint
+        working-directory: vitalai-android
+        run: ./gradlew lint
+
+      - name: Run unit tests
+        working-directory: vitalai-android
+        run: ./gradlew test
+
+      - name: Upload lint report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: vitalai-android/app/build/reports/lint-results*.html
+
+  model-accuracy-gate:
+    name: Model Accuracy Gate
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install TFLite dependencies
+        run: pip install tensorflow numpy pillow scikit-learn
+
+      - name: Run accuracy check
+        run: |
+          python model-training/test_tflite.py \
+            --model vitalai-android/app/src/main/assets/diagnosis_model.tflite \
+            --threshold 0.85
+        env:
+          TEST_DATASET_PATH: ${{ secrets.TEST_DATASET_PATH }}
+
+  build-apk:
+    name: Build Release APK
+    runs-on: ubuntu-latest
+    needs: model-accuracy-gate
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > vitalai-android/app/vitalai.keystore
+
+      - name: Build release APK
+        working-directory: vitalai-android
+        run: ./gradlew assembleRelease
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS:         ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD:      ${{ secrets.KEY_PASSWORD }}
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitalai-release
+          path: vitalai-android/app/build/outputs/apk/release/*.apk
+
+  distribute:
+    name: Firebase App Distribution
+    runs-on: ubuntu-latest
+    needs: build-apk
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download APK
+        uses: actions/download-artifact@v4
+        with:
+          name: vitalai-release
+
+      - name: Upload to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId:       ${{ secrets.FIREBASE_APP_ID }}
+          token:       ${{ secrets.FIREBASE_TOKEN }}
+          groups:      testers
+          file:        app-release.apk
+          releaseNotes: "Build from commit ${{ github.sha }}"

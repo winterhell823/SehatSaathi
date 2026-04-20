@@ -1,0 +1,101 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'vitalai-backend/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'vitalai-backend/**'
+
+jobs:
+  lint-and-test:
+    name: Lint and Test
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:7.0
+        ports:
+          - 27017:27017
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        working-directory: vitalai-backend
+        run: pip install -r requirements.txt
+
+      - name: Run linter
+        working-directory: vitalai-backend
+        run: ruff check .
+
+      - name: Run tests
+        working-directory: vitalai-backend
+        env:
+          MONGO_URI: mongodb://localhost:27017
+          MONGO_DB_NAME: vitalai_test
+          KAFKA_BROKER: localhost:9092
+          LLM_PROVIDER: huggingface
+          HF_API_TOKEN: ${{ secrets.HF_API_TOKEN }}
+        run: pytest tests/ -v
+
+  build-and-push:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: lint-and-test
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v5
+        with:
+          context: vitalai-backend
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/vitalai-backend:latest
+            ${{ secrets.DOCKER_USERNAME }}/vitalai-backend:${{ github.sha }}
+
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host:     ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key:      ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /opt/vitalai
+            docker pull ${{ secrets.DOCKER_USERNAME }}/vitalai-backend:latest
+            docker-compose down
+            docker-compose up -d
+            echo "Deployment complete"
+
+      - name: Smoke test
+        run: |
+          sleep 10
+          curl -f http://${{ secrets.SERVER_HOST }}:8000/health || exit 1
+          echo "Health check passed"
