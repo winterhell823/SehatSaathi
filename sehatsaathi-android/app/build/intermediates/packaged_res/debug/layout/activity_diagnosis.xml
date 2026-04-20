@@ -331,6 +331,7 @@
         app:layout_constraintBottom_toTopOf="@id/bottomNav">
 
         <Button
+            android:id="@+id/btnSaveSync"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:backgroundTint="#5D4037"
@@ -341,6 +342,7 @@
             app:cornerRadius="12dp" />
 
         <Button
+            android:id="@+id/btnPrintShare"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="8dp"

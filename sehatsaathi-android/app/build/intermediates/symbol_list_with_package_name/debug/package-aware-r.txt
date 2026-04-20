@@ -3309,8 +3309,10 @@ id btnMale
 id btnMore
 id btnNext
 id btnOther
+id btnPrintShare
 id btnRemoveImage
 id btnSave
+id btnSaveSync
 id btnServices
 id btnStartDiagnosis
 id buttonPanel
@@ -3434,6 +3436,7 @@ id groups
 id header
 id header_title
 id hideable
+id historyContainer
 id home
 id homeAsUp
 id honorRequest
@@ -3705,6 +3708,7 @@ id toggle
 id toolbar
 id top
 id topAppBar
+id topBar
 id topPanel
 id touch_outside
 id transitionToEnd
@@ -3718,8 +3722,11 @@ id triangle
 id tvAddress
 id tvClinicName
 id tvContact
+id tvDate
+id tvDiagnosis
 id tvDoctorAvailability
 id tvNurseAvailability
+id tvPatientName
 id tvStatus
 id tvTiming
 id unchecked

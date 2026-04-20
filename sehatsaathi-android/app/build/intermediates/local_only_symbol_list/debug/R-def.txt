@@ -89,8 +89,10 @@ id btnMale
 id btnMore
 id btnNext
 id btnOther
+id btnPrintShare
 id btnRemoveImage
 id btnSave
+id btnSaveSync
 id btnServices
 id btnStartDiagnosis
 id etAge
@@ -100,6 +102,7 @@ id etLocation
 id etPassword
 id etSymptoms
 id header
+id historyContainer
 id imgHealthCenter
 id mainContainer
 id nav_bookings
@@ -111,11 +114,15 @@ id nav_tools
 id tagline
 id toolbar
 id topAppBar
+id topBar
 id tvAddress
 id tvClinicName
 id tvContact
+id tvDate
+id tvDiagnosis
 id tvDoctorAvailability
 id tvNurseAvailability
+id tvPatientName
 id tvStatus
 id tvTiming
 layout activity_diagnosis

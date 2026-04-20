@@ -32,6 +32,10 @@
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_alert.xml"
     },
     {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_mic.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_mic.xml"
+    },
+    {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_search.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_search.xml"
     },
@@ -118,6 +122,10 @@
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/layout_activity_vision_diagnostic.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/layout/activity_vision_diagnostic.xml"
+    },
+    {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_image.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_image.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/layout_activity_login.xml.flat",
@@ -240,8 +248,8 @@
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/edittext_bg.xml"
     },
     {
-        "merged": "com.sehatsaathi.app-merged_res-44:/drawable_ic_image.xml.flat",
-        "source": "com.sehatsaathi.app-main-46:/drawable/ic_image.xml"
+        "merged": "com.sehatsaathi.app-merged_res-44:/layout_activity_diagnosis.xml.flat",
+        "source": "com.sehatsaathi.app-main-46:/layout/activity_diagnosis.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_chevron_right.xml.flat",
@@ -302,10 +310,6 @@
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_warning.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_warning.xml"
-    },
-    {
-        "merged": "com.sehatsaathi.app-merged_res-44:/drawable_ic_mic.xml.flat",
-        "source": "com.sehatsaathi.app-main-46:/drawable/ic_mic.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_camera.xml.flat",
