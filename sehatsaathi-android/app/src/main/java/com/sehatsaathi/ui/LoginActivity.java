@@ -12,12 +12,13 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 
 import java.util.concurrent.Executor;
+import android.view.View;
 
 import com.sehatsaathi.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button btnFingerprintLogin;
+    private View btnFingerprintLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
