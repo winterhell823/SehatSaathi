@@ -52,6 +52,10 @@
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_shield_heart.xml"
     },
     {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/layout_activity_patient_intake.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/layout/activity_patient_intake.xml"
+    },
+    {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/layout_activity_diagnosis.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/layout/activity_diagnosis.xml"
     },
@@ -72,8 +76,16 @@
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/menu/bottom_nav_health_menu.xml"
     },
     {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_add.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_add.xml"
+    },
+    {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_location_on.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_location_on.xml"
+    },
+    {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/layout_activity_vision_ai.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/layout/activity_vision_ai.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/layout_activity_splash.xml.flat",
@@ -86,6 +98,10 @@
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/color_bottom_nav_color.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/color/bottom_nav_color.xml"
+    },
+    {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_bg_gender_unselected.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/bg_gender_unselected.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_clinical_notes.xml.flat",
@@ -160,10 +176,6 @@
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/bg_card_rounded.xml"
     },
     {
-        "merged": "com.sehatsaathi.app-merged_res-44:/layout_activity_home.xml.flat",
-        "source": "com.sehatsaathi.app-main-46:/layout/activity_home.xml"
-    },
-    {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_calendar.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_calendar.xml"
     },
@@ -174,6 +186,10 @@
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_dna_bg.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/dna_bg.xml"
+    },
+    {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_bg_dashed_rect.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/bg_dashed_rect.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_circle_icon_bg.xml.flat",
@@ -204,8 +220,16 @@
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/menu/bottom_nav_menu.xml"
     },
     {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_bg_tag_light.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/bg_tag_light.xml"
+    },
+    {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_sync_problem.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_sync_problem.xml"
+    },
+    {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_location.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_location.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_lock.xml.flat",
@@ -216,6 +240,10 @@
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/edittext_bg.xml"
     },
     {
+        "merged": "com.sehatsaathi.app-merged_res-44:/drawable_ic_image.xml.flat",
+        "source": "com.sehatsaathi.app-main-46:/drawable/ic_image.xml"
+    },
+    {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_chevron_right.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_chevron_right.xml"
     },
@@ -224,12 +252,20 @@
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_analytics.xml"
     },
     {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_bg_edittext.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/bg_edittext.xml"
+    },
+    {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/layout_activity_patient_history.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/layout/activity_patient_history.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_more_vert.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_more_vert.xml"
+    },
+    {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_bg_tag_green.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/bg_tag_green.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_medical_bg.xml.flat",
@@ -264,6 +300,14 @@
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_history.xml"
     },
     {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_warning.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_warning.xml"
+    },
+    {
+        "merged": "com.sehatsaathi.app-merged_res-44:/drawable_ic_mic.xml.flat",
+        "source": "com.sehatsaathi.app-main-46:/drawable/ic_mic.xml"
+    },
+    {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_camera.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_camera.xml"
     },
@@ -272,12 +316,20 @@
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/layout/component_confidence_bar.xml"
     },
     {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/layout_activity_health_centre_profile.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/layout/activity_health_centre_profile.xml"
+    },
+    {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/layout_item_referral_card.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/layout/item_referral_card.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_referral.xml.flat",
         "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/ic_referral.xml"
+    },
+    {
+        "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_bg_gender_selected.xml.flat",
+        "source": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-main-46:/drawable/bg_gender_selected.xml"
     },
     {
         "merged": "/Users/vaibhavsharma/.gradle/daemon/8.2/com.sehatsaathi.app-merged_res-44:/drawable_ic_gallery.xml.flat",

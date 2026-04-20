@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:2:1-33:12
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:2:1-40:12
+INJECTED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:2:1-40:12
+INJECTED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:2:1-40:12
+INJECTED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:2:1-40:12
 MERGED from [androidx.navigation:navigation-common:2.7.7] /Users/vaibhavsharma/.gradle/caches/transforms-3/434a0ab9cd0bdb1f7b392b2b369e9011/transformed/navigation-common-2.7.7/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.7.7] /Users/vaibhavsharma/.gradle/caches/transforms-3/20711e42da31dff84852ad50fd6fd1fe/transformed/navigation-runtime-2.7.7/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-fragment:2.7.7] /Users/vaibhavsharma/.gradle/caches/transforms-3/60d7002b9bdc8e06591b92c5bb6858ec/transformed/navigation-fragment-2.7.7/AndroidManifest.xml:17:1-22:12
@@ -81,8 +81,8 @@ ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/a
 	android:name
 		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:8:5-31:19
-INJECTED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:8:5-31:19
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:8:5-38:19
+INJECTED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:8:5-38:19
 MERGED from [com.google.android.material:material:1.11.0] /Users/vaibhavsharma/.gradle/caches/transforms-3/99dc24b8086e9e02f60cbc0643cdc897/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] /Users/vaibhavsharma/.gradle/caches/transforms-3/99dc24b8086e9e02f60cbc0643cdc897/transformed/material-1.11.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/vaibhavsharma/.gradle/caches/transforms-3/1f371f754bd6786f9a76f8e2fd18482b/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -115,12 +115,12 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/vaibhavsharma/.gradl
 		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:9:9-35
 	android:theme
 		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:13:9-49
-activity#com.sehatsaathi.ui.LoginActivity
+activity#com.sehatsaathi.ui.SplashActivity
 ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:15:9-22:20
 	android:exported
 		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:17:13-36
 	android:name
-		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:16:13-60
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:16:13-61
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:18:13-21:29
 action#android.intent.action.MAIN
@@ -131,30 +131,48 @@ category#android.intent.category.LAUNCHER
 ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:20:17-77
 	android:name
 		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:20:27-74
+activity#com.sehatsaathi.ui.LoginActivity
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:24:9-26:39
+	android:exported
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:26:13-36
+	android:name
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:25:13-60
 activity#com.sehatsaathi.ui.HomeActivity
-ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:24:9-68
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:28:9-68
 	android:name
-		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:24:19-65
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:28:19-65
+activity#com.sehatsaathi.ui.PatientIntakeActivity
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:29:9-77
+	android:name
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:29:19-74
+activity#com.sehatsaathi.ui.VisionAIDiagnosisActivity
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:30:9-81
+	android:name
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:30:19-78
 activity#com.sehatsaathi.ui.DiagnosisActivity
-ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:25:9-73
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:31:9-73
 	android:name
-		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:25:19-70
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:31:19-70
 activity#com.sehatsaathi.ui.PatientHistoryActivity
-ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:26:9-78
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:32:9-78
 	android:name
-		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:26:19-75
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:32:19-75
 activity#com.sehatsaathi.ui.ReferralActivity
-ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:27:9-72
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:33:9-72
 	android:name
-		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:27:19-69
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:33:19-69
 activity#com.sehatsaathi.ui.SettingsActivity
-ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:28:9-72
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:34:9-72
 	android:name
-		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:28:19-69
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:34:19-69
+activity#com.sehatsaathi.ui.HealthCentreProfileActivity
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:35:9-83
+	android:name
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:35:19-80
 activity#com.sehatsaathi.ui.OutbreakMapActivity
-ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:29:9-75
+ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:36:9-75
 	android:name
-		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:29:19-72
+		ADDED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml:36:19-72
 uses-sdk
 INJECTED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/vaibhavsharma/StudioProjects/SehatSaathi/sehatsaathi-android/app/src/main/AndroidManifest.xml

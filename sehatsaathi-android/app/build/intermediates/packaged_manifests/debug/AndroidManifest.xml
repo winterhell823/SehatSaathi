@@ -32,7 +32,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.SehatSaathi" >
         <activity
-            android:name="com.sehatsaathi.ui.LoginActivity"
+            android:name="com.sehatsaathi.ui.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,11 +40,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.sehatsaathi.ui.LoginActivity"
+            android:exported="true" />
         <activity android:name="com.sehatsaathi.ui.HomeActivity" />
+        <activity android:name="com.sehatsaathi.ui.PatientIntakeActivity" />
+        <activity android:name="com.sehatsaathi.ui.VisionAIDiagnosisActivity" />
         <activity android:name="com.sehatsaathi.ui.DiagnosisActivity" />
         <activity android:name="com.sehatsaathi.ui.PatientHistoryActivity" />
         <activity android:name="com.sehatsaathi.ui.ReferralActivity" />
         <activity android:name="com.sehatsaathi.ui.SettingsActivity" />
+        <activity android:name="com.sehatsaathi.ui.HealthCentreProfileActivity" />
         <activity android:name="com.sehatsaathi.ui.OutbreakMapActivity" />
 
         <provider
