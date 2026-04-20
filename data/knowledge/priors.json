@@ -1,0 +1,18 @@
+{
+  "_comment": "Rough prevalence weights for common Indian diseases — used for future Bayesian re-ranking of model outputs.",
+  "diseases": {
+    "Malaria": { "weight": 0.12, "seasons": ["monsoon", "post-monsoon"], "regions": ["all"] },
+    "Dengue": { "weight": 0.10, "seasons": ["monsoon", "post-monsoon"], "regions": ["all"] },
+    "Typhoid": { "weight": 0.09, "seasons": ["all"], "regions": ["all"] },
+    "Tuberculosis": { "weight": 0.11, "seasons": ["all"], "regions": ["all"] },
+    "Acute Gastroenteritis": { "weight": 0.15, "seasons": ["summer", "monsoon"], "regions": ["all"] },
+    "Upper Respiratory Tract Infection": { "weight": 0.14, "seasons": ["winter", "spring"], "regions": ["all"] },
+    "Skin Infection (Bacterial)": { "weight": 0.06, "seasons": ["monsoon", "summer"], "regions": ["all"] },
+    "Fungal Skin Infection": { "weight": 0.05, "seasons": ["monsoon", "summer"], "regions": ["all"] },
+    "Anaemia": { "weight": 0.08, "seasons": ["all"], "regions": ["all"] },
+    "Hypertension": { "weight": 0.07, "seasons": ["all"], "regions": ["urban", "peri-urban"] },
+    "Diabetes (Type 2)": { "weight": 0.06, "seasons": ["all"], "regions": ["urban", "peri-urban"] },
+    "Pneumonia": { "weight": 0.05, "seasons": ["winter"], "regions": ["all"] },
+    "Chikungunya": { "weight": 0.04, "seasons": ["monsoon", "post-monsoon"], "regions": ["south", "central"] }
+  }
+}

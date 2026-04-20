@@ -1,0 +1,20 @@
+{
+  "_comment": "Class labels for skin_classifier.tflite. Replace with your actual trained model's labels.",
+  "labels": [
+    "Normal Skin",
+    "Acne / Pimples",
+    "Eczema",
+    "Fungal Infection (Ringworm / Tinea)",
+    "Psoriasis",
+    "Scabies",
+    "Cellulitis (Bacterial Skin Infection)",
+    "Urticaria (Hives)",
+    "Chickenpox (Varicella)",
+    "Impetigo",
+    "Vitiligo",
+    "Burn / Wound",
+    "Insect Bite Reaction",
+    "Seborrheic Dermatitis",
+    "Contact Dermatitis"
+  ]
+}

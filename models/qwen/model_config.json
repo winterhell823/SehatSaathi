@@ -1,0 +1,9 @@
+{
+  "_comment": "Runtime configuration passed to llama-cpp-python Llama().",
+  "n_gpu_layers": 0,
+  "rope_scaling_type": 1,
+  "rope_freq_scale": 1.0,
+  "use_mmap": true,
+  "use_mlock": false,
+  "offload_kqv": false
+}
