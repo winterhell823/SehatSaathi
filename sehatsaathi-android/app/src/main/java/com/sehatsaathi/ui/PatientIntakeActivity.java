@@ -56,7 +56,7 @@ public class PatientIntakeActivity extends AppCompatActivity {
             } else if (itemId == R.id.nav_tools) {
                 return true;
             } else if (itemId == R.id.nav_profile) {
-                startActivity(new Intent(this, SettingsActivity.class));
+                startActivity(new Intent(this, HealthCentreProfileActivity.class));
                 finish();
                 return true;
             }
