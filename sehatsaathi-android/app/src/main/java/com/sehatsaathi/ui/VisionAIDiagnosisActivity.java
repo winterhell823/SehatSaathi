@@ -19,7 +19,7 @@ public class VisionAIDiagnosisActivity extends AppCompatActivity {
 
         findViewById(R.id.btnAnalyze).setOnClickListener(v -> {
             String patientName = getIntent().getStringExtra("PATIENT_NAME");
-            if (patientName == null || patientName.isEmpty()) patientName = "Self Intake (Demo)";
+            if (patientName == null || patientName.isEmpty()) patientName = "Unknown Patient";
 
             // Navigate to Diagnosis Result screen
             Intent intent = new Intent(this, DiagnosisActivity.class);

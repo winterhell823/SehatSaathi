@@ -3,7 +3,6 @@ package com.sehatsaathi.ui;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -13,9 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sehatsaathi.R;
 import com.sehatsaathi.data.local.DatabaseHelper;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -58,8 +54,10 @@ public class DiagnosisActivity extends AppCompatActivity {
     private void saveDiagnosisRecord() {
         try {
             String patientName = getIntent().getStringExtra("PATIENT_NAME");
-            if (patientName == null || patientName.isEmpty()) patientName = "Unknown Patient (Demo)";
-            String uniqueId = "PT-" + String.format(Locale.getDefault(), "%04d", (int)(Math.random() * 10000));
+            if (patientName == null || patientName.isEmpty()) {
+                patientName = "Unknown Patient";
+            }
+            String uniqueId = "PAT" + System.currentTimeMillis();
             String dateStr = new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(new Date());
 
             DatabaseHelper dbHelper = new DatabaseHelper(this);
