@@ -1,3 +1,4 @@
 <manifest package="com.sehatsaathi">
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <application></application>
 </manifest>
