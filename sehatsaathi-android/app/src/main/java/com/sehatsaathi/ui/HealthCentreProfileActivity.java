@@ -30,7 +30,7 @@ public class HealthCentreProfileActivity extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.nav_tools) {
-                startActivity(new Intent(this, VisionAIDiagnosisActivity.class));
+                startActivity(new Intent(this, PatientIntakeActivity.class));
                 finish();
                 return true;
             } else if (itemId == R.id.nav_profile) {

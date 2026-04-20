@@ -33,13 +33,15 @@ public class PatientIntakeActivity extends AppCompatActivity {
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
         findViewById(R.id.btnNext).setOnClickListener(v -> {
-            String name = ((EditText) findViewById(R.id.etFullName)).getText().toString();
+            String name = ((EditText) findViewById(R.id.etFullName)).getText().toString().trim();
             if (name.isEmpty()) {
                 Toast.makeText(this, "Please enter patient name", Toast.LENGTH_SHORT).show();
                 return;
             }
             // Navigate to Vision AI screen
-            startActivity(new Intent(this, VisionAIDiagnosisActivity.class));
+            Intent intent = new Intent(this, VisionAIDiagnosisActivity.class);
+            intent.putExtra("PATIENT_NAME", name);
+            startActivity(intent);
         });
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);

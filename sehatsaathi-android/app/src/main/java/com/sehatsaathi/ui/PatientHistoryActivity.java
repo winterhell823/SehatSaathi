@@ -36,7 +36,7 @@ public class PatientHistoryActivity extends AppCompatActivity {
                 } else if (itemId == R.id.nav_patients) {
                     return true;
                 } else if (itemId == R.id.nav_tools) {
-                    startActivity(new Intent(this, VisionAIDiagnosisActivity.class));
+                    startActivity(new Intent(this, PatientIntakeActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.nav_profile) {
@@ -65,10 +65,18 @@ public class PatientHistoryActivity extends AppCompatActivity {
                 View patientRow = inflater.inflate(R.layout.item_patient_row, historyContainer, false);
                 
                 TextView tvPatientName = patientRow.findViewById(R.id.tvPatientName);
+                TextView tvPatientId = patientRow.findViewById(R.id.tvPatientId);
                 TextView tvDate = patientRow.findViewById(R.id.tvDate);
                 TextView tvDiagnosis = patientRow.findViewById(R.id.tvDiagnosis);
 
                 tvPatientName.setText(record.optString("name", "Unknown Patient"));
+                String pId = record.optString("id", "");
+                if (!pId.isEmpty()) {
+                    tvPatientId.setVisibility(View.VISIBLE);
+                    tvPatientId.setText("ID: " + pId);
+                } else {
+                    tvPatientId.setVisibility(View.GONE);
+                }
                 tvDate.setText("Date: " + record.optString("date", "Unknown Date"));
                 tvDiagnosis.setText(record.optString("diagnosis", "Unknown Diagnosis") + " (" + record.optString("confidence", "92%") + ")");
                 

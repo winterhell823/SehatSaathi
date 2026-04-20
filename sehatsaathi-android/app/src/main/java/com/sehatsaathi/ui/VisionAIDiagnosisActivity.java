@@ -18,8 +18,13 @@ public class VisionAIDiagnosisActivity extends AppCompatActivity {
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
         findViewById(R.id.btnAnalyze).setOnClickListener(v -> {
+            String patientName = getIntent().getStringExtra("PATIENT_NAME");
+            if (patientName == null || patientName.isEmpty()) patientName = "Self Intake (Demo)";
+
             // Navigate to Diagnosis Result screen
-            startActivity(new Intent(this, DiagnosisActivity.class));
+            Intent intent = new Intent(this, DiagnosisActivity.class);
+            intent.putExtra("PATIENT_NAME", patientName);
+            startActivity(intent);
         });
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);

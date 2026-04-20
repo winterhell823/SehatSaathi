@@ -58,8 +58,13 @@ public class DiagnosisActivity extends AppCompatActivity {
             String existingData = prefs.getString("patient_history", "[]");
             JSONArray historyArray = new JSONArray(existingData);
 
+            String patientName = getIntent().getStringExtra("PATIENT_NAME");
+            if (patientName == null || patientName.isEmpty()) patientName = "Unknown Patient (Demo)";
+            String uniqueId = "PT-" + String.format(Locale.getDefault(), "%04d", (int)(Math.random() * 10000));
+
             JSONObject newRecord = new JSONObject();
-            newRecord.put("name", "Unknown Patient (Demo)");
+            newRecord.put("name", patientName);
+            newRecord.put("id", uniqueId);
             newRecord.put("diagnosis", "Contact Dermatitis");
             newRecord.put("confidence", "92%");
             newRecord.put("date", new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(new Date()));

@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(this, PatientHistoryActivity.class));
                 return true;
             } else if (itemId == R.id.nav_tools) {
-                startActivity(new Intent(this, VisionAIDiagnosisActivity.class));
+                startActivity(new Intent(this, PatientIntakeActivity.class));
                 return true;
             } else if (itemId == R.id.nav_profile) {
                 startActivity(new Intent(this, HealthCentreProfileActivity.class));

@@ -45,6 +45,15 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvPatientId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID: PT-0000"
+                    android:textColor="#5D4037"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
