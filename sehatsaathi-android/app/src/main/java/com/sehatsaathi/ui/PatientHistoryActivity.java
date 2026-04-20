@@ -2,7 +2,8 @@ package com.sehatsaathi.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +13,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sehatsaathi.R;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.sehatsaathi.data.local.DatabaseHelper;
 
 public class PatientHistoryActivity extends AppCompatActivity {
     @Override
@@ -51,39 +50,48 @@ public class PatientHistoryActivity extends AppCompatActivity {
 
     private void loadPatientHistory() {
         LinearLayout historyContainer = findViewById(R.id.historyContainer);
-        SharedPreferences prefs = getSharedPreferences("sehat_saathi_db", Context.MODE_PRIVATE);
-        String existingData = prefs.getString("patient_history", "[]");
+        historyContainer.removeAllViews(); // Clear before inflation
+
+        DatabaseHelper dbHelper = new DatabaseHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(DatabaseHelper.TABLE_PATIENTS, null, null, null, null, null, null);
 
         try {
-            JSONArray historyArray = new JSONArray(existingData);
             LayoutInflater inflater = LayoutInflater.from(this);
             
-            // Show empty state if needed OR inflate existing items. We'll populate from newest (last) to oldest
-            for (int i = historyArray.length() - 1; i >= 0; i--) {
-                JSONObject record = historyArray.getJSONObject(i);
+            if (cursor.moveToLast()) {
+                do {
+                    String name = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_NAME));
+                    String pId = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_UNIQUE_ID));
+                    String date = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_DATE));
+                    String diagnosis = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_DIAGNOSIS));
+                    String confidence = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_CONFIDENCE));
                 
-                View patientRow = inflater.inflate(R.layout.item_patient_row, historyContainer, false);
-                
-                TextView tvPatientName = patientRow.findViewById(R.id.tvPatientName);
-                TextView tvPatientId = patientRow.findViewById(R.id.tvPatientId);
-                TextView tvDate = patientRow.findViewById(R.id.tvDate);
-                TextView tvDiagnosis = patientRow.findViewById(R.id.tvDiagnosis);
+                    View patientRow = inflater.inflate(R.layout.item_patient_row, historyContainer, false);
+                    
+                    TextView tvPatientName = patientRow.findViewById(R.id.tvPatientName);
+                    TextView tvPatientId = patientRow.findViewById(R.id.tvPatientId);
+                    TextView tvDate = patientRow.findViewById(R.id.tvDate);
+                    TextView tvDiagnosis = patientRow.findViewById(R.id.tvDiagnosis);
 
-                tvPatientName.setText(record.optString("name", "Unknown Patient"));
-                String pId = record.optString("id", "");
-                if (!pId.isEmpty()) {
-                    tvPatientId.setVisibility(View.VISIBLE);
-                    tvPatientId.setText("ID: " + pId);
-                } else {
-                    tvPatientId.setVisibility(View.GONE);
-                }
-                tvDate.setText("Date: " + record.optString("date", "Unknown Date"));
-                tvDiagnosis.setText(record.optString("diagnosis", "Unknown Diagnosis") + " (" + record.optString("confidence", "92%") + ")");
-                
-                historyContainer.addView(patientRow);
+                    tvPatientName.setText(name != null ? name : "Unknown Patient");
+                    if (pId != null && !pId.isEmpty()) {
+                        tvPatientId.setVisibility(View.VISIBLE);
+                        tvPatientId.setText("ID: " + pId);
+                    } else {
+                        tvPatientId.setVisibility(View.GONE);
+                    }
+                    tvDate.setText("Date: " + (date != null ? date : "Unknown Date"));
+                    tvDiagnosis.setText((diagnosis != null ? diagnosis : "Unknown Diagnosis") + " (" + (confidence != null ? confidence : "92%") + ")");
+                    
+                    historyContainer.addView(patientRow);
+                } while (cursor.moveToPrevious());
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (cursor != null) cursor.close();
+            db.close();
         }
     }
 }

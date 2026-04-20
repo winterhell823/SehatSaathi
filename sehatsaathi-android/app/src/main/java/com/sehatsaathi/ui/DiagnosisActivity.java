@@ -1,8 +1,10 @@
 package com.sehatsaathi.ui;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -10,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sehatsaathi.R;
+import com.sehatsaathi.data.local.DatabaseHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -54,26 +57,29 @@ public class DiagnosisActivity extends AppCompatActivity {
 
     private void saveDiagnosisRecord() {
         try {
-            SharedPreferences prefs = getSharedPreferences("sehat_saathi_db", Context.MODE_PRIVATE);
-            String existingData = prefs.getString("patient_history", "[]");
-            JSONArray historyArray = new JSONArray(existingData);
-
             String patientName = getIntent().getStringExtra("PATIENT_NAME");
             if (patientName == null || patientName.isEmpty()) patientName = "Unknown Patient (Demo)";
             String uniqueId = "PT-" + String.format(Locale.getDefault(), "%04d", (int)(Math.random() * 10000));
+            String dateStr = new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(new Date());
 
-            JSONObject newRecord = new JSONObject();
-            newRecord.put("name", patientName);
-            newRecord.put("id", uniqueId);
-            newRecord.put("diagnosis", "Contact Dermatitis");
-            newRecord.put("confidence", "92%");
-            newRecord.put("date", new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(new Date()));
-            
-            historyArray.put(newRecord);
+            DatabaseHelper dbHelper = new DatabaseHelper(this);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-            prefs.edit().putString("patient_history", historyArray.toString()).apply();
+            ContentValues values = new ContentValues();
+            values.put(DatabaseHelper.COL_UNIQUE_ID, uniqueId);
+            values.put(DatabaseHelper.COL_NAME, patientName);
+            values.put(DatabaseHelper.COL_DIAGNOSIS, "Contact Dermatitis");
+            values.put(DatabaseHelper.COL_CONFIDENCE, "92%");
+            values.put(DatabaseHelper.COL_DATE, dateStr);
             
-            Toast.makeText(this, "Record saved and synced securely!", Toast.LENGTH_SHORT).show();
+            long result = db.insert(DatabaseHelper.TABLE_PATIENTS, null, values);
+            db.close();
+            
+            if(result != -1) {
+                Toast.makeText(this, "Record saved and synced securely!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Failed to save record locally.", Toast.LENGTH_SHORT).show();
+            }
             
             // Navigate straight to History
             startActivity(new Intent(this, PatientHistoryActivity.class));
