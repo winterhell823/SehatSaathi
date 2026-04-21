@@ -4,104 +4,84 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/diag_bg" android:padding="16dp">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-        
-        <!-- Header Section -->
+
+        <!-- Header -->
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_location_on" app:tint="@color/diag_text_dark"/>
             <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="SehatSaathi" android:textStyle="bold" android:textColor="@color/diag_text_dark" android:textSize="16sp" android:layout_marginStart="4dp"/>
-            <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_person" android:background="@drawable/bg_diag_circle_teal" />
+            <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_person" android:background="@drawable/bg_diag_circle_teal"/>
         </LinearLayout>
-        
-        <Space android:layout_width="match_parent" android:layout_height="24dp" />
-        
+
+        <Space android:layout_width="match_parent" android:layout_height="24dp"/>
+
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Symptom Clarification" android:textColor="@color/diag_text_dark" android:textSize="28sp" android:textStyle="bold" />
+            android:text="Symptom Clarification" android:textColor="@color/diag_text_dark"
+            android:textSize="28sp" android:textStyle="bold"/>
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp"
-            android:text="Step 1 of the Diagnostic Flow" android:textColor="@color/diag_text_gray" android:textSize="13sp" />
-        
-        <Space android:layout_width="match_parent" android:layout_height="20dp" />
+            android:text="Answer the follow-up questions to refine your diagnosis." android:textColor="@color/diag_text_gray" android:textSize="13sp"/>
 
-        <!-- Confidence Bar -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Confidence" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="10sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="68%" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="10sp"/>
-            </LinearLayout>
-            <ProgressBar android:layout_width="match_parent" android:layout_height="4dp" android:layout_marginTop="4dp" style="?android:attr/progressBarStyleHorizontal" android:progress="68" android:progressDrawable="@drawable/bg_primary_gradient" />
-        </LinearLayout>
-        
-        <Space android:layout_width="match_parent" android:layout_height="24dp" />
-        
-        <!-- Question 1 -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:padding="16dp" android:layout_marginBottom="12dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="VITAL SIGN" android:textColor="@color/diag_secondary" android:textStyle="bold" android:textSize="9sp" android:letterSpacing="0.1" />
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Has the fever lasted more than 3 days?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="6dp"/>
-            <Space android:layout_width="match_parent" android:layout_height="12dp" />
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:id="@+id/btnQ1Yes" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:id="@+id/btnQ1No" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:id="@+id/btnQ1Unsure" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Unsure" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-            </LinearLayout>
-        </LinearLayout>
+        <Space android:layout_width="match_parent" android:layout_height="20dp"/>
 
-        <!-- Question 2 -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:backgroundTint="#F2EAE1" android:padding="16dp" android:layout_marginBottom="12dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DERMATOLOGICAL" android:textColor="@color/diag_text_gray" android:textStyle="bold" android:textSize="9sp" android:letterSpacing="0.1" />
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Are there any skin rashes or visible irritations?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="6dp"/>
-            <Space android:layout_width="match_parent" android:layout_height="12dp" />
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:id="@+id/btnQ2Yes" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:id="@+id/btnQ2No" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:id="@+id/btnQ2Unsure" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Unsure" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-            </LinearLayout>
-        </LinearLayout>
+        <!-- Dynamic Question Card (driven by RAG API) -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_diag_card"
+            android:padding="20dp" android:layout_marginBottom="16dp">
 
-        <!-- Question 3 -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:backgroundTint="#F9EBEA" android:padding="16dp" android:layout_marginBottom="12dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="RESPIRATORY" android:textColor="@color/diag_text_gray" android:textStyle="bold" android:textSize="9sp" android:letterSpacing="0.1" />
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Experience difficulty breathing while resting?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="6dp"/>
-            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="FOLLOW-UP QUESTION" android:textColor="@color/diag_secondary"
+                android:textStyle="bold" android:textSize="9sp" android:letterSpacing="0.1"/>
+
+            <!-- THIS IS THE DYNAMIC QUESTION TEXT FROM RAG -->
+            <TextView
+                android:id="@+id/tvCurrentQuestion"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Loading question from AI..." android:textColor="@color/diag_text_dark"
+                android:textStyle="bold" android:textSize="16sp" android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"/>
+
+            <Space android:layout_width="match_parent" android:layout_height="16dp"/>
+
+            <!-- Answer Buttons -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:id="@+id/btnQ3Yes" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:id="@+id/btnQ3No" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-            </LinearLayout>
-        </LinearLayout>
-        
-        <!-- Question 4 -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:backgroundTint="#EBF5F0" android:padding="16dp" android:layout_marginBottom="12dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NEUROLOGICAL" android:textColor="@color/diag_secondary" android:textStyle="bold" android:textSize="9sp" android:letterSpacing="0.1" />
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Have you noticed sudden severe headaches?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="6dp"/>
-            <Space android:layout_width="match_parent" android:layout_height="12dp" />
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:id="@+id/btnQ4Yes" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:id="@+id/btnQ4No" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ1Yes" android:layout_width="0dp" android:layout_height="44dp"
+                    android:layout_weight="1" android:text="Yes"
+                    android:background="@drawable/bg_diag_selection_inactive"
+                    android:textColor="@color/diag_text_gray" android:textSize="13sp"
+                    android:textAllCaps="false" app:cornerRadius="8dp"/>
+                <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
+                <Button android:id="@+id/btnQ1No" android:layout_width="0dp" android:layout_height="44dp"
+                    android:layout_weight="1" android:text="No"
+                    android:background="@drawable/bg_diag_selection_inactive"
+                    android:textColor="@color/diag_text_gray" android:textSize="13sp"
+                    android:textAllCaps="false" app:cornerRadius="8dp"/>
+                <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
+                <Button android:id="@+id/btnQ1Unsure" android:layout_width="0dp" android:layout_height="44dp"
+                    android:layout_weight="1" android:text="Unsure"
+                    android:background="@drawable/bg_diag_selection_inactive"
+                    android:textColor="@color/diag_text_gray" android:textSize="13sp"
+                    android:textAllCaps="false" app:cornerRadius="8dp"/>
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Question 5 -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:padding="16dp" android:layout_marginBottom="16dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="GENERAL WELLNESS" android:textColor="@color/diag_text_gray" android:textStyle="bold" android:textSize="9sp" android:letterSpacing="0.1" />
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Is there a significant loss of appetite?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="6dp"/>
-            <Space android:layout_width="match_parent" android:layout_height="12dp" />
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:id="@+id/btnQ5Yes" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:id="@+id/btnQ5No" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:id="@+id/btnQ5Unsure" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Unsure" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
-            </LinearLayout>
+        <!-- Loading indicator shown while waiting for next RAG response -->
+        <LinearLayout
+            android:id="@+id/loadingLayout"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center"
+            android:visibility="gone" android:padding="16dp">
+            <ProgressBar android:layout_width="24dp" android:layout_height="24dp" android:layout_marginEnd="12dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Analysing with RAG..." android:textColor="@color/diag_text_gray" android:textSize="13sp"/>
         </LinearLayout>
-        
+
+        <Space android:layout_width="match_parent" android:layout_height="16dp"/>
+
         <!-- Proceed Button -->
         <Button android:id="@+id/btnProceed" android:layout_width="match_parent" android:layout_height="60dp"
-            android:text="Proceed to Analysis   →" android:textColor="@android:color/white" android:textSize="16sp" android:backgroundTint="@color/diag_text_dark" android:textAllCaps="false" app:cornerRadius="12dp" android:textStyle="bold" />
-            
-        <Space android:layout_width="match_parent" android:layout_height="16dp" />
+            android:text="Submit Answer  →" android:textColor="@android:color/white"
+            android:textSize="16sp" android:backgroundTint="@color/diag_text_dark"
+            android:textAllCaps="false" app:cornerRadius="12dp" android:textStyle="bold"/>
+
+        <Space android:layout_width="match_parent" android:layout_height="16dp"/>
     </LinearLayout>
 </ScrollView>
