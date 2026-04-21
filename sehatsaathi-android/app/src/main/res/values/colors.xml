@@ -5,4 +5,18 @@
     <color name="primary">#5D4037</color>
     <color name="primary_dark">#3E2723</color>
     <color name="accent">#8D6E63</color>
+    
+    <!-- Diagnostic UI Colors -->
+    <color name="diag_bg">#FDFBF9</color>
+    <color name="diag_text_dark">#1D1B16</color>
+    <color name="diag_text_gray">#8D6E63</color>
+    <color name="diag_text_light">#4E463D</color>
+    <color name="diag_secondary">#5D4037</color>
+    <color name="diag_primary">#00897B</color>
+    <color name="diag_hint">#A89080</color>
+    <color name="diag_red_text">#C62828</color>
+    <color name="diag_success">#2E7D32</color>
+    
+    <!-- Bottom Navigation Colors -->
+    <color name="bottom_nav_color">#5D4037</color>
 </resources>
