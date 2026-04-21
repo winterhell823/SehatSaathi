@@ -82,11 +82,17 @@ public class SymptomClarificationFragment extends Fragment {
             if (btnNo != null)    btnNo.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
             if (btnUnsure != null) btnUnsure.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
             v.setBackgroundResource(R.drawable.bg_diag_selection_active);
+            if (btnProceed != null) btnProceed.setEnabled(true);
         };
 
         if (btnYes != null)    btnYes.setOnClickListener(answerListener);
         if (btnNo != null)     btnNo.setOnClickListener(answerListener);
         if (btnUnsure != null) btnUnsure.setOnClickListener(answerListener);
+
+        setAnswerButtonsEnabled(true);
+        if (btnProceed != null) {
+            btnProceed.setEnabled(false);
+        }
 
         if (btnProceed != null) {
             btnProceed.setOnClickListener(v -> {
@@ -108,6 +114,7 @@ public class SymptomClarificationFragment extends Fragment {
         // Show loading
         if (loadingLayout != null) loadingLayout.setVisibility(View.VISIBLE);
         if (btnProceed != null)    btnProceed.setEnabled(false);
+        setAnswerButtonsEnabled(false);
 
         RagModels.ChatRequest request = new RagModels.ChatRequest(
                 answer,
@@ -123,7 +130,7 @@ public class SymptomClarificationFragment extends Fragment {
                 if (getActivity() == null) return;
                 getActivity().runOnUiThread(() -> {
                     if (loadingLayout != null) loadingLayout.setVisibility(View.GONE);
-                    if (btnProceed != null)    btnProceed.setEnabled(true);
+                    setAnswerButtonsEnabled(true);
 
                     if (response.isSuccessful() && response.body() != null) {
                         activity.addToHistory("user", answer);
@@ -145,7 +152,7 @@ public class SymptomClarificationFragment extends Fragment {
                 if (getActivity() == null) return;
                 getActivity().runOnUiThread(() -> {
                     if (loadingLayout != null) loadingLayout.setVisibility(View.GONE);
-                    if (btnProceed != null)    btnProceed.setEnabled(true);
+                    setAnswerButtonsEnabled(true);
                     activity.addToHistory("user", answer);
                     RagModels.ChatResponse localResponse = LocalRagEngine.nextResponse(
                             activity.getSymptomText(),
@@ -171,11 +178,27 @@ public class SymptomClarificationFragment extends Fragment {
         if (btnYes != null) btnYes.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
         if (btnNo != null) btnNo.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
         if (btnUnsure != null) btnUnsure.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
+        if (btnProceed != null) btnProceed.setEnabled(false);
 
         String nextQ = ragResponse.message != null ? ragResponse.message : "Any other symptoms?";
         if (ragResponse.followUpQuestion != null && !ragResponse.followUpQuestion.isEmpty()) {
             nextQ = nextQ + "\n\n" + ragResponse.followUpQuestion;
         }
         if (tvQuestion != null) tvQuestion.setText(nextQ);
+    }
+
+    private void setAnswerButtonsEnabled(boolean enabled) {
+        if (btnYes != null) {
+            btnYes.setEnabled(enabled);
+            btnYes.setClickable(enabled);
+        }
+        if (btnNo != null) {
+            btnNo.setEnabled(enabled);
+            btnNo.setClickable(enabled);
+        }
+        if (btnUnsure != null) {
+            btnUnsure.setEnabled(enabled);
+            btnUnsure.setClickable(enabled);
+        }
     }
 }
