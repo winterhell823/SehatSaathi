@@ -39,45 +39,22 @@ val LightTeal = Color(0xFFE8F5F0)
 @OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
 @Composable
 fun DiagnosticAppUI() {
-    var selectedNavIndex by remember { mutableStateOf(0) }
     val pagerState = rememberPagerState(pageCount = { 3 })
     
     Scaffold(
-        bottomBar = { AppBottomNav(selectedNavIndex) { selectedNavIndex = it } },
+        bottomBar = { AppBottomNav() },
         containerColor = BgColor
     ) { paddingValues ->
-        when (selectedNavIndex) {
-            0 -> {
-                HorizontalPager(
-                    state = pagerState,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(paddingValues)
-                ) { page ->
-                    when (page) {
-                        0 -> DiagnosticHubScreen()
-                        1 -> SymptomClarificationScreen()
-                        2 -> DiagnosticSummaryScreen()
-                    }
-                }
-            }
-            1 -> {
-                // Records Screen Placeholder
-                Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
-                    Text("Records Screen", color = TextDark, fontSize = 20.sp)
-                }
-            }
-            2 -> {
-                // VitalAI Screen Placeholder
-                Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
-                    Text("VitalAI Screen", color = TextDark, fontSize = 20.sp)
-                }
-            }
-            3 -> {
-                // Settings Screen Placeholder
-                Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
-                    Text("Settings Screen", color = TextDark, fontSize = 20.sp)
-                }
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) { page ->
+            when (page) {
+                0 -> DiagnosticHubScreen()
+                1 -> SymptomClarificationScreen()
+                2 -> DiagnosticSummaryScreen()
             }
         }
     }
@@ -444,16 +421,16 @@ fun RedFlagItem(text: String) {
 // BOTTOM NAVIGATION
 // ==========================================
 @Composable
-fun AppBottomNav(selectedIndex: Int, onNavigate: (Int) -> Unit) {
+fun AppBottomNav() {
     NavigationBar(
         containerColor = Color.White,
         modifier = Modifier.border(width = 1.dp, color = BorderColor)
     ) {
         NavigationBarItem(
-            selected = selectedIndex == 0,
-            onClick = { onNavigate(0) },
-            icon = { Icon(Icons.Default.Home, contentDescription = "Diagnostics") },
-            label = { Text("Diagnostics", fontSize = 10.sp) },
+            selected = true,
+            onClick = { /* TODO */ },
+            icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
+            label = { Text("Home", fontSize = 10.sp) },
             colors = NavigationBarItemDefaults.colors(
                 selectedIconColor = SecondaryAccent,
                 selectedTextColor = SecondaryAccent,
@@ -463,43 +440,18 @@ fun AppBottomNav(selectedIndex: Int, onNavigate: (Int) -> Unit) {
             )
         )
         NavigationBarItem(
-            selected = selectedIndex == 1,
-            onClick = { onNavigate(1) },
-            icon = { Icon(Icons.Default.List, contentDescription = "Records") },
-            label = { Text("Records", fontSize = 10.sp) },
-            colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = SecondaryAccent,
-                selectedTextColor = SecondaryAccent,
-                unselectedIconColor = Color(0xFFD4D0CB),
-                unselectedTextColor = Color(0xFFD4D0CB),
-                indicatorColor = Color.Transparent
-            )
+            selected = false,
+            onClick = { /* TODO */ },
+            icon = { Icon(Icons.Default.Person, contentDescription = "Patients") },
+            label = { Text("Patients", fontSize = 10.sp) },
+            colors = NavigationBarItemDefaults.colors(unselectedIconColor = Color(0xFFD4D0CB), unselectedTextColor = Color(0xFFD4D0CB))
         )
         NavigationBarItem(
-            selected = selectedIndex == 2,
-            onClick = { onNavigate(2) },
-            icon = { Icon(Icons.Default.LocationOn, contentDescription = "VitalAI") },
-            label = { Text("VitalAI", fontSize = 10.sp) },
-            colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = SecondaryAccent,
-                selectedTextColor = SecondaryAccent,
-                unselectedIconColor = Color(0xFFD4D0CB),
-                unselectedTextColor = Color(0xFFD4D0CB),
-                indicatorColor = Color.Transparent
-            )
-        )
-        NavigationBarItem(
-            selected = selectedIndex == 3,
-            onClick = { onNavigate(3) },
+            selected = false,
+            onClick = { /* TODO */ },
             icon = { Icon(Icons.Default.Settings, contentDescription = "Settings") },
             label = { Text("Settings", fontSize = 10.sp) },
-            colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = SecondaryAccent,
-                selectedTextColor = SecondaryAccent,
-                unselectedIconColor = Color(0xFFD4D0CB),
-                unselectedTextColor = Color(0xFFD4D0CB),
-                indicatorColor = Color.Transparent
-            )
+            colors = NavigationBarItemDefaults.colors(unselectedIconColor = Color(0xFFD4D0CB), unselectedTextColor = Color(0xFFD4D0CB))
         )
     }
 }
