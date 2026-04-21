@@ -1,6 +1,9 @@
 package com.sehatsaathi.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -38,10 +41,24 @@ public class PatientIntakeActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please enter patient name", Toast.LENGTH_SHORT).show();
                 return;
             }
-            // Navigate to Vision AI screen
-            Intent intent = new Intent(this, VisionAIDiagnosisActivity.class);
-            intent.putExtra("PATIENT_NAME", name);
-            startActivity(intent);
+            
+            // Check internet connection
+            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetwork = cm != null ? cm.getActiveNetworkInfo() : null;
+            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+            
+            if (isConnected) {
+                // Online: Go to Vision AI first (Photos feature)
+                Intent intent = new Intent(this, VisionAIDiagnosisActivity.class);
+                intent.putExtra("PATIENT_NAME", name);
+                startActivity(intent);
+            } else {
+                // Offline: Skip photos, go straight to Diagnosis (Follow-up questions only)
+                Toast.makeText(this, "Offline Mode: Jumping to Questionnaire", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, DiagnosisActivity.class);
+                intent.putExtra("PATIENT_NAME", name);
+                startActivity(intent);
+            }
         });
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
