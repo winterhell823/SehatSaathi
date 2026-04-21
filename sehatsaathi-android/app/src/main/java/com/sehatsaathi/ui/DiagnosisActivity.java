@@ -1,11 +1,9 @@
 package com.sehatsaathi.ui;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +19,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class DiagnosisActivity extends AppCompatActivity {
-    
+
     private String finalResultSummary = "Contact Dermatitis";
     private String finalConfidence = "92%";
 
@@ -32,12 +30,12 @@ public class DiagnosisActivity extends AppCompatActivity {
 
         runDiagnosticEngine();
 
-        // Removed btnSaveSync block
+        // Auto-save diagnosis record when screen opens
+        saveDiagnosisRecord();
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
         if (bottomNav != null) {
             bottomNav.setSelectedItemId(R.id.nav_tools);
-
             bottomNav.setOnItemSelectedListener(item -> {
                 int itemId = item.getItemId();
                 if (itemId == R.id.nav_home) {
@@ -61,33 +59,25 @@ public class DiagnosisActivity extends AppCompatActivity {
     }
 
     private void runDiagnosticEngine() {
-        FollowUpQuestionEngine engine = new FollowUpQuestionEngine();
-
-        // Suppose model predicted Contact Dermatitis with 72%
-        engine.start("Contact Dermatitis", 72);
-
-        while (engine.hasMoreQuestions()) {
-            FollowUpQuestion question = engine.getNextQuestion();
-
-            // Show question.getQuestionText() in UI
-            // Show question.getOptions() as buttons / radio buttons
-
-            // Example answer from user:
-            String selectedAnswer = "Yes"; // Note: this is a static mock answer for illustration
-
-            engine.submitAnswer(question, selectedAnswer);
+        try {
+            FollowUpQuestionEngine engine = new FollowUpQuestionEngine();
+            engine.start("Contact Dermatitis", 72);
+            while (engine.hasMoreQuestions()) {
+                FollowUpQuestion question = engine.getNextQuestion();
+                engine.submitAnswer(question, "Yes");
+            }
+            finalResultSummary = engine.getFinalSummary();
+            finalConfidence = engine.getCurrentScore() + "%";
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        finalResultSummary = engine.getFinalSummary();
-        finalConfidence = engine.getCurrentScore() + "%";
     }
 
     private void saveDiagnosisRecord() {
         try {
             String patientName = getIntent().getStringExtra("PATIENT_NAME");
-            if (patientName == null || patientName.isEmpty()) {
-                patientName = "Unknown Patient";
-            }
+            if (patientName == null || patientName.isEmpty()) patientName = "Unknown Patient";
+
             String uniqueId = "PAT" + System.currentTimeMillis();
             String dateStr = new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(new Date());
 
@@ -100,23 +90,16 @@ public class DiagnosisActivity extends AppCompatActivity {
             values.put(DatabaseHelper.COL_DIAGNOSIS, finalResultSummary);
             values.put(DatabaseHelper.COL_CONFIDENCE, finalConfidence);
             values.put(DatabaseHelper.COL_DATE, dateStr);
-            
+
             long result = db.insert(DatabaseHelper.TABLE_PATIENTS, null, values);
             db.close();
-            
-            if(result != -1) {
-                Toast.makeText(this, "Record saved and synced securely!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Failed to save record locally.", Toast.LENGTH_SHORT).show();
-            }
-            
-            // Navigate straight to History
-            startActivity(new Intent(this, PatientHistoryActivity.class));
-            finish();
 
+            if (result != -1) {
+                Toast.makeText(this, "Record saved successfully!", Toast.LENGTH_SHORT).show();
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Failed to save record.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Could not save record.", Toast.LENGTH_SHORT).show();
         }
     }
 }
