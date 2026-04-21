@@ -34,6 +34,7 @@
         <activity android:name="com.sehatsaathi.ui.SettingsActivity" />
         <activity android:name="com.sehatsaathi.ui.HealthCentreProfileActivity" />
         <activity android:name="com.sehatsaathi.ui.OutbreakMapActivity" />
+        <activity android:name="com.sehatsaathi.ui.diagnostic.DiagnosticMainActivity" />
 
     </application>
 

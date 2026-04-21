@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/diag_bg" android:padding="16dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Symptom Clarification" android:textColor="@color/diag_text_dark" android:textSize="20sp" android:textStyle="bold" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Step 2 of 5 Diagnostic Process" android:textColor="@color/diag_text_gray" android:textSize="12sp" />
+        <Space android:layout_width="match_parent" android:layout_height="24dp" />
+        
+        <!-- Mock Question 1 -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:padding="16dp" android:layout_marginBottom="8dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Has the rash been spreading rapidly?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" />
+            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_active" android:textColor="@android:color/white" android:textSize="12sp" android:textAllCaps="false" />
+                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
+                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" />
+                <Space android:layout_width="8dp" android:layout_height="wrap_content" />
+                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Unsure" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" />
+            </LinearLayout>
+        </LinearLayout>
+        
+        <Space android:layout_width="match_parent" android:layout_height="16dp" />
+        <Button android:id="@+id/btnProceed" android:layout_width="match_parent" android:layout_height="56dp"
+            android:text="Proceed to Analysis" android:textColor="@color/diag_bg" android:background="@drawable/bg_diag_btn_primary" android:textAllCaps="false" />
+    </LinearLayout>
+</ScrollView>

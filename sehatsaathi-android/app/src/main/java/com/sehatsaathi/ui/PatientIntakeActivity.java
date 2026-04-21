@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sehatsaathi.R;
+import com.sehatsaathi.ui.diagnostic.DiagnosticMainActivity;
 
 public class PatientIntakeActivity extends AppCompatActivity {
 
@@ -55,7 +56,7 @@ public class PatientIntakeActivity extends AppCompatActivity {
             } else {
                 // Offline: Skip photos, go straight to Diagnosis (Follow-up questions only)
                 Toast.makeText(this, "Offline Mode: Jumping to Questionnaire", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, DiagnosisActivity.class);
+                Intent intent = new Intent(this, DiagnosticMainActivity.class);
                 intent.putExtra("PATIENT_NAME", name);
                 startActivity(intent);
             }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/diag_bg" android:padding="16dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="PREMIUM CARE" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textStyle="bold" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Diagnostic Hub" android:textColor="@color/diag_text_dark" android:textSize="24sp" android:textStyle="bold" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Analyze symptoms and clinical data" android:textColor="@color/diag_text_gray" android:textSize="14sp" />
+        <Space android:layout_width="match_parent" android:layout_height="24dp" />
+        
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:padding="16dp">
+            <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Search patient ID or name..."
+                android:background="@drawable/bg_diag_input" android:padding="12dp" android:textColorHint="@color/diag_hint" android:textColor="@color/diag_text_dark" android:textSize="14sp" />
+            <Space android:layout_width="match_parent" android:layout_height="16dp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:background="@drawable/bg_diag_input" android:padding="12dp" android:gravity="center_vertical">
+                <View android:layout_width="40dp" android:layout_height="40dp" android:background="@drawable/bg_diag_circle_teal" />
+                <Space android:layout_width="12dp" android:layout_height="wrap_content" />
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Elena Rodriguez" android:textStyle="bold" android:textColor="@color/diag_text_dark" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Age: 32 • Female" android:textSize="12sp" android:textColor="@color/diag_text_gray" />
+                </LinearLayout>
+            </LinearLayout>
+            <Space android:layout_width="match_parent" android:layout_height="16dp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Recent History" android:textColor="@color/diag_secondary" android:textStyle="bold" android:textSize="14sp" />
+        </LinearLayout>
+        
+        <Space android:layout_width="match_parent" android:layout_height="16dp" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:padding="16dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Clinical Observations" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="16sp" />
+            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+            <EditText android:layout_width="match_parent" android:layout_height="80dp" android:gravity="top" android:hint="Enter notes, vitals..."
+                android:background="@drawable/bg_diag_input" android:padding="12dp" android:textColorHint="@color/diag_hint" android:textColor="@color/diag_text_dark" android:textSize="14sp" />
+        </LinearLayout>
+        
+        <Space android:layout_width="match_parent" android:layout_height="24dp" />
+        <Button android:id="@+id/btnStart" android:layout_width="match_parent" android:layout_height="56dp"
+            android:text="Start VitalAI Analysis" android:textColor="@color/diag_bg" android:background="@drawable/bg_diag_btn_primary" android:textAllCaps="false" />
+    </LinearLayout>
+</ScrollView>
