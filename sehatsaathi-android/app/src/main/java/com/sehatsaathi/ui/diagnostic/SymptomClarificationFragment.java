@@ -109,9 +109,6 @@ public class SymptomClarificationFragment extends Fragment {
         if (loadingLayout != null) loadingLayout.setVisibility(View.VISIBLE);
         if (btnProceed != null)    btnProceed.setEnabled(false);
 
-        // Add user answer to history
-        activity.addToHistory("user", answer);
-
         RagModels.ChatRequest request = new RagModels.ChatRequest(
                 answer,
                 activity.getConversationHistory(),
@@ -129,8 +126,10 @@ public class SymptomClarificationFragment extends Fragment {
                     if (btnProceed != null)    btnProceed.setEnabled(true);
 
                     if (response.isSuccessful() && response.body() != null) {
+                        activity.addToHistory("user", answer);
                         handleChatResponse(activity, response.body());
                     } else {
+                        activity.addToHistory("user", answer);
                         RagModels.ChatResponse localResponse = LocalRagEngine.nextResponse(
                                 activity.getSymptomText(),
                                 activity.getConversationHistory()
@@ -147,6 +146,7 @@ public class SymptomClarificationFragment extends Fragment {
                 getActivity().runOnUiThread(() -> {
                     if (loadingLayout != null) loadingLayout.setVisibility(View.GONE);
                     if (btnProceed != null)    btnProceed.setEnabled(true);
+                    activity.addToHistory("user", answer);
                     RagModels.ChatResponse localResponse = LocalRagEngine.nextResponse(
                             activity.getSymptomText(),
                             activity.getConversationHistory()
