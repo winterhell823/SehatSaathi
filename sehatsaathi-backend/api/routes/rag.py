@@ -1,27 +1,25 @@
-# api/routes/rag.py
-# PURPOSE: Chatbot endpoints — one message per call, stateless
-# Android app maintains conversation_history and sends it each time
-
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException
 from pydantic import BaseModel
-import base64, json
+from models.schemas import RAGQueryRequest, TreatmentPlanResponse
+from db.mongo_client import get_db
+from db.collections import DRUG_AVAILABILITY
 from rag.treatment_mapper import get_diagnosis
 
-router = APIRouter(prefix="/rag", tags=["Diagnosis Chatbot"])
+import base64
+import json
+
+
+router = APIRouter(tags=["RAG"])
 
 
 class ChatRequest(BaseModel):
-    message: str                       # what user just typed
-    conversation_history: list = []    # all previous turns, [] on first message
-    patient_id: str = ""      # to save history under correct patient
-    initial_message: str = None        # very first message, pass this every turn for saving
+    message: str
+    conversation_history: list = []
+    patient_id: str = ""
+    initial_message: str = None
 
 
 def is_already_diagnosed(conversation_history: list) -> bool:
-    """
-    Checks conversation history for a diagnosed status.
-    If found, chat is permanently closed — no more input accepted.
-    """
     for turn in conversation_history:
         if turn.get("role") == "assistant":
             try:
@@ -35,7 +33,6 @@ def is_already_diagnosed(conversation_history: list) -> bool:
 
 @router.post("/chat")
 async def chat(request: ChatRequest):
-    
     if is_already_diagnosed(request.conversation_history):
         raise HTTPException(
             status_code=400,
@@ -46,7 +43,7 @@ async def chat(request: ChatRequest):
         conversation_history=request.conversation_history,
         new_user_message=request.message,
         patient_id=request.patient_id,
-        initial_message=request.initial_message or request.message
+        initial_message=request.initial_message or request.message,
     )
 
 
@@ -56,9 +53,8 @@ async def chat_with_image(
     message: str = Form("Please analyze this image"),
     conversation_history: str = Form("[]"),
     patient_id: str = Form("anonymous"),
-    initial_message: str = Form(None)
+    initial_message: str = Form(None),
 ):
-   
     history = json.loads(conversation_history)
 
     if is_already_diagnosed(history):
@@ -77,15 +73,9 @@ async def chat_with_image(
         image_base64=image_base64,
         image_media_type=media_type,
         patient_id=patient_id,
-        initial_message=initial_message or message
+        initial_message=initial_message or message,
     )
 
-from fastapi import APIRouter, HTTPException
-from models.schemas import RAGQueryRequest, TreatmentPlanResponse
-from db.mongo_client import get_db
-from db.collections import DRUG_AVAILABILITY
-
-router = APIRouter()
 
 @router.post("/query", response_model=TreatmentPlanResponse)
 async def rag_query(request: RAGQueryRequest):
@@ -97,24 +87,25 @@ async def rag_query(request: RAGQueryRequest):
                 "Confirm diagnosis visually",
                 "Check patient allergy history",
                 "Administer first-line treatment",
-                "Schedule follow-up in 7 days"
+                "Schedule follow-up in 7 days",
             ],
             drugs=drugs,
             referral_recommended=request.confidence < 0.7,
             referral_reason="Low confidence — recommend clinical confirmation" if request.confidence < 0.7 else None,
-            nearest_facility=drugs[0].get("nearest_phc") if drugs else None
+            nearest_facility=drugs[0].get("nearest_phc") if drugs else None,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 async def get_drug_availability(diagnosis: str, district: str) -> list:
     db = get_db()
     cursor = db[DRUG_AVAILABILITY].find(
         {
             "condition": diagnosis.lower().replace(" ", "_"),
-            "district":  district.lower()
+            "district": district.lower(),
         },
-        {"_id": 0}
+        {"_id": 0},
     )
     return await cursor.to_list(length=10)
 
