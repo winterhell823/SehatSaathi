@@ -41,6 +41,27 @@ public class SymptomClarificationFragment extends Fragment {
         btnProceed    = view.findViewById(R.id.btnProceed);
         loadingLayout = view.findViewById(R.id.loadingLayout);
 
+        // Display patient information from intent
+        if (getActivity() != null) {
+            String patientName = getActivity().getIntent().getStringExtra("PATIENT_NAME");
+            String patientAge = getActivity().getIntent().getStringExtra("PATIENT_AGE");
+            String patientGender = getActivity().getIntent().getStringExtra("PATIENT_GENDER");
+            
+            TextView tvPatientName = view.findViewById(R.id.tvPatientInfoName);
+            TextView tvPatientAgeGender = view.findViewById(R.id.tvPatientAgeGender);
+            
+            if (tvPatientName != null && patientName != null) {
+                tvPatientName.setText(patientName);
+            }
+            
+            if (tvPatientAgeGender != null) {
+                String ageGenderText = (patientAge != null && !patientAge.isEmpty() ? patientAge + " yrs" : "--") 
+                                     + " / " 
+                                     + (patientGender != null ? patientGender : "--");
+                tvPatientAgeGender.setText(ageGenderText);
+            }
+        }
+
         // Show the first question from the RAG initial response
         if (getActivity() instanceof DiagnosticMainActivity) {
             DiagnosticMainActivity activity = (DiagnosticMainActivity) getActivity();

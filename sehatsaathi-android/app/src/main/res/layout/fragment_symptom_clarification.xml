@@ -14,11 +14,23 @@
 
         <Space android:layout_width="match_parent" android:layout_height="24dp"/>
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="Symptom Clarification" android:textColor="@color/diag_text_dark"
-            android:textSize="28sp" android:textStyle="bold"/>
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp"
-            android:text="Answer the follow-up questions to refine your diagnosis." android:textColor="@color/diag_text_gray" android:textSize="13sp"/>
+            android:textSize="24sp" android:textStyle="bold"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp"
+            android:text="Answer the follow-up questions to refine your diagnosis." android:textColor="@color/diag_text_gray" android:textSize="12sp"/>
+        
+        <!-- Patient Info Display -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:background="@drawable/bg_diag_input" android:padding="12dp" android:orientation="horizontal">
+            <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Patient" android:textSize="10sp" android:textColor="@color/diag_text_gray" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvPatientInfoName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Loading..." android:textSize="13sp" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:layout_marginTop="2dp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="end">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Age/Gender" android:textSize="10sp" android:textColor="@color/diag_text_gray" android:textStyle="bold"/>
+                <TextView android:id="@+id/tvPatientAgeGender" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textSize="13sp" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:layout_marginTop="2dp"/>
+            </LinearLayout>
+        </LinearLayout>
 
         <Space android:layout_width="match_parent" android:layout_height="20dp"/>
 
@@ -36,18 +48,18 @@
                 android:id="@+id/tvCurrentQuestion"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:text="Loading question from AI..." android:textColor="@color/diag_text_dark"
-                android:textStyle="bold" android:textSize="16sp" android:layout_marginTop="8dp"
+                android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="8dp"
                 android:lineSpacingExtra="4dp"/>
 
             <Space android:layout_width="match_parent" android:layout_height="16dp"/>
 
             <!-- Answer Buttons -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:id="@+id/btnQ1Yes" android:layout_width="0dp" android:layout_height="44dp"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp">
+                <Button android:id="@+id/btnQ1Yes" android:layout_width="0dp" android:layout_height="48dp"
                     android:layout_weight="1" android:text="Yes"
                     android:background="@drawable/bg_diag_selection_inactive"
-                    android:textColor="@color/diag_text_gray" android:textSize="13sp"
-                    android:textAllCaps="false" app:cornerRadius="8dp"/>
+                    android:textColor="@color/diag_text_gray" android:textSize="12sp"
+                    android:textAllCaps="false" app:cornerRadius="8dp" android:layout_marginEnd="4dp"/>
                 <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
                 <Button android:id="@+id/btnQ1No" android:layout_width="0dp" android:layout_height="44dp"
                     android:layout_weight="1" android:text="No"
