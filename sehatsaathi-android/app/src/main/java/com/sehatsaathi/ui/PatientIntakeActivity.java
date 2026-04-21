@@ -29,8 +29,8 @@ public class PatientIntakeActivity extends AppCompatActivity {
         View startButton = findViewById(R.id.btnStart);
         if (startButton != null) {
             startButton.setOnClickListener(v -> {
-                // Jump to the Symptom Clarification screen
-                startActivity(new Intent(this, VisionAIDiagnosisActivity.class));
+                // Launch DiagnosticMainActivity with ViewPager fragments
+                startActivity(new Intent(this, com.sehatsaathi.ui.diagnostic.DiagnosticMainActivity.class));
             });
         }
 
