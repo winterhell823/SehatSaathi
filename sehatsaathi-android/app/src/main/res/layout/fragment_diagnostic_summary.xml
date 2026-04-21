@@ -1,36 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/diag_bg" android:padding="16dp">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        
+        <!-- Header Section -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_location_on" app:tint="@color/diag_text_dark"/>
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="VitalAI" android:textStyle="bold" android:textColor="@color/diag_text_dark" android:textSize="16sp" android:layout_marginStart="4dp"/>
+            <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_person" android:background="@drawable/bg_diag_circle_teal" />
+        </LinearLayout>
+        
+        <Space android:layout_width="match_parent" android:layout_height="24dp" />
+        
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="ASSESSMENT COMPLETED" android:background="@drawable/bg_diag_teal_badge" android:textColor="@color/diag_secondary" android:textSize="11sp" android:textStyle="bold" android:padding="6dp" />
+            android:text="ASSESSMENT COMPLETED" android:background="@drawable/bg_diag_teal_badge" android:textColor="@color/diag_text_gray" android:textSize="9sp" android:textStyle="bold" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:letterSpacing="0.1"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp"
+            android:text="Diagnostic Summary" android:textColor="@color/diag_text_dark" android:textSize="28sp" android:textStyle="bold" />
+        
+        <!-- Session Info -->
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:background="@drawable/bg_diag_input" android:paddingHorizontal="12dp" android:paddingVertical="6dp" android:gravity="center_vertical" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Patient ID: #VA-8821" android:textSize="11sp" android:textColor="@color/diag_text_dark" android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:background="@drawable/bg_diag_input" android:paddingHorizontal="12dp" android:paddingVertical="6dp" android:gravity="center_vertical" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Session: Dec 12, 10:45 AM" android:textSize="11sp" android:textColor="@color/diag_text_gray" android:textStyle="bold"/>
+        </LinearLayout>
+        
         <Space android:layout_width="match_parent" android:layout_height="24dp" />
         
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="STEP 01: ANALYSIS" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:layout_marginBottom="8dp" />
+        <!-- Step 02: Analysis -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="STEP 02: ANALYSIS" android:textColor="@color/diag_text_gray" android:textStyle="bold" android:textSize="10sp" android:letterSpacing="0.1" android:layout_marginBottom="8dp" />
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:padding="20dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Influenza (Type A/B)" android:textColor="@color/diag_text_dark" android:textSize="24sp" android:textStyle="bold" />
-            <Space android:layout_width="match_parent" android:layout_height="16dp" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reasoning:" android:textColor="@color/diag_text_gray" android:textStyle="bold" android:textSize="12sp" />
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Based on sudden onset fever, body aches, and dry cough." android:textColor="#5C5956" android:textSize="13sp" />
-            <Space android:layout_width="match_parent" android:layout_height="16dp" />
-            <Button android:layout_width="match_parent" android:layout_height="56dp" android:text="Refer to Clinic" android:background="@drawable/bg_diag_btn_primary" android:textColor="@color/diag_bg" android:textAllCaps="false" />
+            
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LIKELY CONDITION" android:textColor="@color/diag_text_gray" android:textSize="9sp" android:textStyle="bold" android:letterSpacing="0.1"/>
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Influenza (Type A/B)" android:textColor="@color/diag_text_dark" android:textSize="22sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+                
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center">
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="85%" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="24sp"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_security" app:tint="@color/diag_text_dark" android:layout_marginStart="4dp"/>
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CONFIDENCE SCORE" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="7sp" android:letterSpacing="0.1"/>
+                </LinearLayout>
+            </LinearLayout>
+            
+            <Space android:layout_width="match_parent" android:layout_height="20dp" />
+            
+            <!-- Reasoning -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_analytics" app:tint="@color/diag_primary" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reasoning" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="12sp" android:layout_marginStart="6dp" />
+            </LinearLayout>
+            
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="The reported combination of high-grade fever (102°F), persistent non-productive cough, and acute muscle fatigue aligns strongly with typical viral influenza patterns. The sudden onset of symptoms and recent local outbreaks further support this automated assessment." android:textColor="#665D58" android:textSize="13sp" android:layout_marginTop="8dp" android:lineSpacingExtra="4dp"/>
+        </LinearLayout>
+        
+        <Space android:layout_width="match_parent" android:layout_height="16dp" />
+        
+        <!-- Step 03: Refer to Clinic -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_btn_primary" android:padding="20dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="STEP 03" android:textColor="@color/diag_bg" android:textSize="9sp" android:textStyle="bold" android:alpha="0.7"/>
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_medical_services" app:tint="@color/diag_bg" android:layout_gravity="center_horizontal" android:layout_marginTop="8dp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Refer to Clinic" android:textColor="@color/diag_bg" android:textStyle="bold" android:textSize="18sp" android:gravity="center" android:layout_marginTop="8dp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Medical consultation recommended within 24 hours to confirm diagnoses and discuss antivirals." android:textColor="@color/diag_bg" android:textSize="11sp" android:gravity="center" android:layout_marginTop="8dp" android:alpha="0.8"/>
+            <Button android:layout_width="match_parent" android:layout_height="48dp" android:text="Find Nearest Facility" android:backgroundTint="@color/diag_bg" android:textColor="@color/diag_text_dark" android:textSize="12sp" android:textStyle="bold" app:cornerRadius="8dp" android:layout_marginTop="16dp" android:textAllCaps="false"/>
         </LinearLayout>
         
         <Space android:layout_width="match_parent" android:layout_height="24dp" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="STEP 02: RED FLAGS" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:layout_marginBottom="8dp" />
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_red_flag" android:padding="16dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="STEP 03: CRITICAL RED FLAGS" android:textColor="@color/diag_red_text" android:textStyle="bold" android:textSize="14sp" />
+        
+        <!-- Step 04: Immediate Guidance -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="STEP 04: IMMEDIATE GUIDANCE" android:textColor="@color/diag_text_gray" android:textStyle="bold" android:textSize="10sp" android:letterSpacing="0.1" android:layout_marginBottom="12dp" />
+        
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                <ImageView android:layout_width="36dp" android:layout_height="36dp" android:src="@drawable/ic_location_on" android:background="@drawable/bg_diag_circle_teal" android:padding="8dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hydration" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="12sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Consume 2.5L of water daily. Electrolyte drinks recommended." android:textColor="@color/diag_text_gray" android:textSize="11sp" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                <ImageView android:layout_width="36dp" android:layout_height="36dp" android:src="@drawable/ic_history" android:background="@drawable/bg_diag_circle_teal" android:padding="8dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rest" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="12sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Prioritize 8-10 hours of sleep. Avoid strenuous activity." android:textColor="@color/diag_text_gray" android:textSize="11sp" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                <ImageView android:layout_width="36dp" android:layout_height="36dp" android:src="@drawable/ic_clinical_notes" android:background="@drawable/bg_diag_circle_teal" android:padding="8dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Monitoring" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="12sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Check temperature every 6 hours. Log in VitalAI Records." android:textColor="@color/diag_text_gray" android:textSize="11sp" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                <ImageView android:layout_width="36dp" android:layout_height="36dp" android:src="@drawable/ic_medical_services" android:background="@drawable/bg_diag_circle_teal" android:padding="8dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="OTC Relief" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="12sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Acetaminophen for fever. Consult pharmacist for dosing." android:textColor="@color/diag_text_gray" android:textSize="11sp" android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        
+        <Space android:layout_width="match_parent" android:layout_height="8dp" />
+        
+        <!-- Step 05: Red Flags -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_red_flag" android:padding="20dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="top">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_alert" app:tint="@color/diag_red_text" android:layout_marginTop="2dp" />
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="STEP 05: CRITICAL RED FLAGS" android:textColor="@color/diag_red_text" android:textStyle="bold" android:textSize="12sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Seek Emergency Medical Services (911) if any of the following occur:" android:textColor="@color/diag_red_text" android:textSize="11sp" android:layout_marginTop="4dp" android:alpha="0.8"/>
+                </LinearLayout>
+            </LinearLayout>
+            
+            <Space android:layout_width="match_parent" android:layout_height="16dp" />
+            
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <View android:layout_width="4dp" android:layout_height="4dp" android:background="@color/diag_red_text" android:layout_marginTop="6dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Difficulty Breathing or Shortness\nof Breath" android:textColor="@color/diag_red_text" android:textSize="11sp" android:textStyle="bold" android:layout_marginStart="8dp"/>
+            </LinearLayout>
+            
             <Space android:layout_width="match_parent" android:layout_height="12dp" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="• Difficulty breathing" android:textColor="#5C5956" />
+            
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <View android:layout_width="4dp" android:layout_height="4dp" android:background="@color/diag_red_text" android:layout_marginTop="6dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Persistent Chest Pain or Pressure" android:textColor="@color/diag_red_text" android:textSize="11sp" android:textStyle="bold" android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+            
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <View android:layout_width="4dp" android:layout_height="4dp" android:background="@color/diag_red_text" android:layout_marginTop="6dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sudden Confusion or Inability to\nWake" android:textColor="@color/diag_red_text" android:textSize="11sp" android:textStyle="bold" android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <View android:layout_width="4dp" android:layout_height="4dp" android:background="@color/diag_red_text" android:layout_marginTop="6dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Persistent Vomiting or\nDehydration" android:textColor="@color/diag_red_text" android:textSize="11sp" android:textStyle="bold" android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <View android:layout_width="4dp" android:layout_height="4dp" android:background="@color/diag_red_text" android:layout_marginTop="6dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Bluish Lips or Face (Cyanosis)" android:textColor="@color/diag_red_text" android:textSize="11sp" android:textStyle="bold" android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <View android:layout_width="4dp" android:layout_height="4dp" android:background="@color/diag_red_text" android:layout_marginTop="6dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Seizures or Severe Muscle Pain" android:textColor="@color/diag_red_text" android:textSize="11sp" android:textStyle="bold" android:layout_marginStart="8dp"/>
+            </LinearLayout>
         </LinearLayout>
         
-        <Space android:layout_width="match_parent" android:layout_height="24dp" />
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-            <Button android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:text="Download (PDF)" android:background="@drawable/bg_diag_btn_outline" android:textColor="@color/diag_primary" android:textAllCaps="false" />
+        <Space android:layout_width="match_parent" android:layout_height="32dp" />
+        
+        <!-- Bottom Disclaimer and Buttons -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="VitalAI is an assistive diagnostic tool and does not replace professional medical advice." android:textColor="@color/diag_text_gray" android:textSize="10sp" android:gravity="center" android:layout_marginBottom="16dp"/>
+        
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center">
+            <Button android:layout_width="wrap_content" android:layout_height="48dp" android:text="Download\nReport (PDF)" android:background="@drawable/bg_diag_btn_outline" android:textColor="@color/diag_text_dark" android:textSize="11sp" android:textAllCaps="false" app:cornerRadius="24dp" android:paddingHorizontal="24dp"/>
             <Space android:layout_width="12dp" android:layout_height="wrap_content" />
-            <Button android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:text="Share" android:background="@drawable/bg_diag_btn_primary" android:textColor="@color/diag_bg" android:textAllCaps="false" />
+            <Button android:layout_width="wrap_content" android:layout_height="48dp" android:text="Share with\nDoctor" android:backgroundTint="@color/diag_text_dark" android:textColor="@color/diag_bg" android:textSize="11sp" android:textAllCaps="false" app:cornerRadius="24dp" android:paddingHorizontal="24dp"/>
         </LinearLayout>
-        <Space android:layout_width="match_parent" android:layout_height="24dp" />
+        
+        <Space android:layout_width="match_parent" android:layout_height="32dp" />
     </LinearLayout>
 </ScrollView>

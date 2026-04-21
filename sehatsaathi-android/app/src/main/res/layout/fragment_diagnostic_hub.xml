@@ -1,42 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/diag_bg" android:padding="16dp">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="PREMIUM CARE" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textStyle="bold" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Diagnostic Hub" android:textColor="@color/diag_text_dark" android:textSize="24sp" android:textStyle="bold" />
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Analyze symptoms and clinical data" android:textColor="@color/diag_text_gray" android:textSize="14sp" />
+        
+        <!-- Header Section -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_location_on" app:tint="@color/diag_text_dark"/>
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="VitalAI" android:textStyle="bold" android:textColor="@color/diag_text_dark" android:textSize="16sp" android:layout_marginStart="4dp"/>
+            <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_person" android:background="@drawable/bg_diag_circle_teal"/>
+        </LinearLayout>
+        
         <Space android:layout_width="match_parent" android:layout_height="24dp" />
         
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="PRECISION CARE" android:textColor="@color/diag_text_gray" android:textSize="10sp" android:textStyle="bold" android:letterSpacing="0.1" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp"
+            android:text="Diagnostic Hub" android:textColor="@color/diag_text_dark" android:textSize="28sp" android:textStyle="bold" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp"
+            android:text="Initiate a restorative analysis by integrating clinical observations, patient history, and visual evidence." android:textColor="@color/diag_text_gray" android:textSize="13sp" android:lineSpacingExtra="4dp" />
+        
+        <!-- System Online Badge -->
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:background="@drawable/bg_diag_input" android:paddingHorizontal="12dp" android:paddingVertical="6dp" android:gravity="center_vertical" android:orientation="horizontal">
+            <View android:layout_width="8dp" android:layout_height="8dp" android:background="@drawable/dot_green" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="System Online" android:textSize="12sp" android:textColor="@color/diag_text_dark" android:layout_marginStart="8dp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <Space android:layout_width="match_parent" android:layout_height="24dp" />
+        
+        <!-- Patient Focus Card -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Patient Focus" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="16sp" android:layout_marginBottom="12dp" />
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:padding="16dp">
-            <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Search patient ID or name..."
-                android:background="@drawable/bg_diag_input" android:padding="12dp" android:textColorHint="@color/diag_hint" android:textColor="@color/diag_text_dark" android:textSize="14sp" />
+            <!-- Search -->
+            <EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Search Patient ID or Name"
+                android:background="@drawable/bg_diag_input" android:padding="12dp" android:textColorHint="@color/diag_hint" android:textColor="@color/diag_text_dark" android:textSize="13sp" />
+            
             <Space android:layout_width="match_parent" android:layout_height="16dp" />
+            
+            <!-- Patient Profile -->
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:background="@drawable/bg_diag_input" android:padding="12dp" android:gravity="center_vertical">
-                <View android:layout_width="40dp" android:layout_height="40dp" android:background="@drawable/bg_diag_circle_teal" />
-                <Space android:layout_width="12dp" android:layout_height="wrap_content" />
-                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Elena Rodriguez" android:textStyle="bold" android:textColor="@color/diag_text_dark" />
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Age: 32 • Female" android:textSize="12sp" android:textColor="@color/diag_text_gray" />
+                <ImageView android:layout_width="40dp" android:layout_height="40dp" android:src="@drawable/ic_person" android:background="@drawable/bg_diag_circle_teal" android:padding="4dp" app:tint="@color/diag_bg"/>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Elena Rodriguez" android:textStyle="bold" android:textColor="@color/diag_text_dark" android:textSize="14sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ID: #VA-8820" android:textSize="11sp" android:textColor="@color/diag_text_gray" android:layout_marginTop="2dp" />
                 </LinearLayout>
             </LinearLayout>
-            <Space android:layout_width="match_parent" android:layout_height="16dp" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Recent History" android:textColor="@color/diag_secondary" android:textStyle="bold" android:textSize="14sp" />
+            
+            <Space android:layout_width="match_parent" android:layout_height="20dp" />
+            
+            <!-- Recent History -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Recent History" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="View All" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textStyle="bold" />
+            </LinearLayout>
+            
+            <!-- History item 1 -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp" android:gravity="center_vertical">
+                <View android:layout_width="4dp" android:layout_height="4dp" android:background="@color/diag_text_dark" android:layout_marginEnd="8dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="OCT 12, 2023" android:textColor="@color/diag_text_gray" android:textSize="10sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Routine metabolic screening" android:textColor="@color/diag_text_dark" android:textSize="13sp" android:layout_marginTop="2dp" />
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="STABLE" android:background="@drawable/bg_diag_input" android:textColor="@color/diag_secondary" android:textSize="9sp" android:textStyle="bold" android:paddingHorizontal="8dp" android:paddingVertical="4dp" />
+            </LinearLayout>
+            
+            <!-- History item 2 -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp" android:gravity="center_vertical">
+                <View android:layout_width="4dp" android:layout_height="4dp" android:background="@color/diag_text_dark" android:layout_marginEnd="8dp"/>
+                <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AUG 28, 2023" android:textColor="@color/diag_text_gray" android:textSize="10sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cardiovascular stress test" android:textColor="@color/diag_text_dark" android:textSize="13sp" android:layout_marginTop="2dp" />
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="FOLLOW UP" android:background="@drawable/bg_diag_input" android:textColor="@color/diag_text_gray" android:textSize="9sp" android:textStyle="bold" android:paddingHorizontal="8dp" android:paddingVertical="4dp" />
+            </LinearLayout>
+            
+            <Space android:layout_width="match_parent" android:layout_height="8dp" />
         </LinearLayout>
         
         <Space android:layout_width="match_parent" android:layout_height="16dp" />
+        
+        <!-- Clinical Observations -->
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:padding="16dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Clinical Observations" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="16sp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_add_a_photo" app:tint="@color/diag_text_dark"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Clinical Observations" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginStart="8dp"/>
+            </LinearLayout>
+            
             <Space android:layout_width="match_parent" android:layout_height="12dp" />
-            <EditText android:layout_width="match_parent" android:layout_height="80dp" android:gravity="top" android:hint="Enter notes, vitals..."
-                android:background="@drawable/bg_diag_input" android:padding="12dp" android:textColorHint="@color/diag_hint" android:textColor="@color/diag_text_dark" android:textSize="14sp" />
+            <EditText android:layout_width="match_parent" android:layout_height="80dp" android:gravity="top" android:hint="Enter detailed patient\nsymptoms, onset duration,\nand severity..."
+                android:background="@drawable/bg_diag_input" android:padding="12dp" android:textColorHint="@color/diag_hint" android:textColor="@color/diag_text_dark" android:textSize="13sp" />
+            
+            <!-- Tags -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="#AcutePain" android:background="@drawable/bg_diag_input" android:textColor="@color/diag_text_dark" android:textSize="11sp" android:paddingHorizontal="10dp" android:paddingVertical="6dp" android:layout_marginEnd="8dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="#Fever" android:background="@drawable/bg_diag_input" android:textColor="@color/diag_text_dark" android:textSize="11sp" android:paddingHorizontal="10dp" android:paddingVertical="6dp" android:layout_marginEnd="8dp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp" android:gravity="center_vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="#Neurological" android:background="@drawable/bg_diag_input" android:textColor="@color/diag_text_dark" android:textSize="11sp" android:paddingHorizontal="10dp" android:paddingVertical="6dp" android:layout_marginEnd="12dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+ Add Tag" android:textColor="@color/diag_text_dark" android:textSize="12sp" android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
         
+        <Space android:layout_width="match_parent" android:layout_height="16dp" />
+        
+        <!-- Upload Analysis Images -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_diag_card" android:padding="20dp" android:gravity="center">
+            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_analytics" app:tint="@color/diag_text_dark"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Upload Analysis Images" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="8dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DICOM, JPEG, or PNG formats\nsupported" android:textColor="@color/diag_text_gray" android:textSize="11sp" android:gravity="center" android:layout_marginTop="4dp"/>
+        </LinearLayout>
+        
+        <!-- Scan Image Thumbnail -->
+        <ImageView android:layout_width="match_parent" android:layout_height="180dp" android:layout_marginTop="16dp" android:src="@drawable/dna_bg" android:scaleType="centerCrop" android:background="@drawable/bg_diag_card" android:clipToOutline="true"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Recent Sample Scan" android:textColor="@color/diag_hint" android:textSize="10sp" android:layout_marginTop="4dp"/>
+
         <Space android:layout_width="match_parent" android:layout_height="24dp" />
-        <Button android:id="@+id/btnStart" android:layout_width="match_parent" android:layout_height="56dp"
-            android:text="Start VitalAI Analysis" android:textColor="@color/diag_bg" android:background="@drawable/bg_diag_btn_primary" android:textAllCaps="false" />
+        
+        <!-- Button -->
+        <Button android:id="@+id/btnStart" android:layout_width="match_parent" android:layout_height="60dp"
+            android:text="Start VitalAI Analysis  ⚡" android:textColor="@color/diag_bg" android:textSize="16sp" android:textStyle="bold" android:backgroundTint="@color/diag_text_dark" android:textAllCaps="false" app:cornerRadius="12dp"/>
     </LinearLayout>
 </ScrollView>
