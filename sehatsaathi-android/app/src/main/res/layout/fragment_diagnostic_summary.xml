@@ -8,7 +8,7 @@
         <!-- Header Section -->
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_location_on" app:tint="@color/diag_text_dark"/>
-            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="VitalAI" android:textStyle="bold" android:textColor="@color/diag_text_dark" android:textSize="16sp" android:layout_marginStart="4dp"/>
+            <TextView android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="SehatSaathi" android:textStyle="bold" android:textColor="@color/diag_text_dark" android:textSize="16sp" android:layout_marginStart="4dp"/>
             <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_person" android:background="@drawable/bg_diag_circle_teal" />
         </LinearLayout>
         
@@ -96,7 +96,7 @@
                 <ImageView android:layout_width="36dp" android:layout_height="36dp" android:src="@drawable/ic_clinical_notes" android:background="@drawable/bg_diag_circle_teal" android:padding="8dp"/>
                 <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginStart="12dp">
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Monitoring" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="12sp"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Check temperature every 6 hours. Log in VitalAI Records." android:textColor="@color/diag_text_gray" android:textSize="11sp" android:layout_marginTop="2dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Check temperature every 6 hours. Log in SehatSaathi Records." android:textColor="@color/diag_text_gray" android:textSize="11sp" android:layout_marginTop="2dp"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -167,7 +167,7 @@
         <Space android:layout_width="match_parent" android:layout_height="32dp" />
         
         <!-- Bottom Disclaimer and Buttons -->
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="VitalAI is an assistive diagnostic tool and does not replace professional medical advice." android:textColor="@color/diag_text_gray" android:textSize="10sp" android:gravity="center" android:layout_marginBottom="16dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="SehatSaathi is an assistive diagnostic tool and does not replace professional medical advice." android:textColor="@color/diag_text_gray" android:textSize="10sp" android:gravity="center" android:layout_marginBottom="16dp"/>
         
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center">
             <Button android:layout_width="wrap_content" android:layout_height="48dp" android:text="Download\nReport (PDF)" android:background="@drawable/bg_diag_btn_outline" android:textColor="@color/diag_text_dark" android:textSize="11sp" android:textAllCaps="false" app:cornerRadius="24dp" android:paddingHorizontal="24dp"/>
