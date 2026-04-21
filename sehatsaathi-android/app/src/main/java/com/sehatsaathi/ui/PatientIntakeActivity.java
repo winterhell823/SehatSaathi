@@ -26,31 +26,36 @@ public class PatientIntakeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_intake);
 
-        findViewById(R.id.btnStart).setOnClickListener(v -> {
-            // Jump to the Symptom Clarification screen
-            startActivity(new Intent(this, VisionAIDiagnosisActivity.class));
-        });
+        View startButton = findViewById(R.id.btnStart);
+        if (startButton != null) {
+            startButton.setOnClickListener(v -> {
+                // Jump to the Symptom Clarification screen
+                startActivity(new Intent(this, VisionAIDiagnosisActivity.class));
+            });
+        }
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
-        bottomNav.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.nav_home) {
-                startActivity(new Intent(this, HomeActivity.class));
-                finish();
-                return true;
-            } else if (itemId == R.id.nav_patients) {
-                startActivity(new Intent(this, PatientHistoryActivity.class));
-                finish();
-                return true;
-            } else if (itemId == R.id.nav_tools) {
-                return true;
-            } else if (itemId == R.id.nav_profile) {
-                startActivity(new Intent(this, HealthCentreProfileActivity.class));
-                finish();
-                return true;
-            }
-            return false;
-        });
+        if (bottomNav != null) {
+            bottomNav.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                if (itemId == R.id.nav_home) {
+                    startActivity(new Intent(this, HomeActivity.class));
+                    finish();
+                    return true;
+                } else if (itemId == R.id.nav_patients) {
+                    startActivity(new Intent(this, PatientHistoryActivity.class));
+                    finish();
+                    return true;
+                } else if (itemId == R.id.nav_tools) {
+                    return true;
+                } else if (itemId == R.id.nav_profile) {
+                    startActivity(new Intent(this, HealthCentreProfileActivity.class));
+                    finish();
+                    return true;
+                }
+                return false;
+            });
+        }
     }
 
 }

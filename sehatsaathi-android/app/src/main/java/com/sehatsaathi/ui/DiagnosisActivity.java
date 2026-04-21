@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,27 +35,29 @@ public class DiagnosisActivity extends AppCompatActivity {
         // Removed btnSaveSync block
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
-        bottomNav.setSelectedItemId(R.id.nav_tools);
+        if (bottomNav != null) {
+            bottomNav.setSelectedItemId(R.id.nav_tools);
 
-        bottomNav.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.nav_home) {
-                startActivity(new Intent(this, HomeActivity.class));
-                finish();
-                return true;
-            } else if (itemId == R.id.nav_patients) {
-                startActivity(new Intent(this, PatientHistoryActivity.class));
-                finish();
-                return true;
-            } else if (itemId == R.id.nav_tools) {
-                return true;
-            } else if (itemId == R.id.nav_profile) {
-                startActivity(new Intent(this, HealthCentreProfileActivity.class));
-                finish();
-                return true;
-            }
-            return false;
-        });
+            bottomNav.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                if (itemId == R.id.nav_home) {
+                    startActivity(new Intent(this, HomeActivity.class));
+                    finish();
+                    return true;
+                } else if (itemId == R.id.nav_patients) {
+                    startActivity(new Intent(this, PatientHistoryActivity.class));
+                    finish();
+                    return true;
+                } else if (itemId == R.id.nav_tools) {
+                    return true;
+                } else if (itemId == R.id.nav_profile) {
+                    startActivity(new Intent(this, HealthCentreProfileActivity.class));
+                    finish();
+                    return true;
+                }
+                return false;
+            });
+        }
     }
 
     private void runDiagnosticEngine() {
