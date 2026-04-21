@@ -1,0 +1,14 @@
+[
+  {
+    "user": "[Symptoms / Complaint]\nHigh fever (104°F) for 4 days, chills, headache, muscle pain. Lives in a village near a pond in Odisha. Monsoon season.",
+    "assistant": "{\n  \"diagnosis\": \"Malaria (Plasmodium falciparum suspected)\",\n  \"confidence\": 78,\n  \"reasoning\": \"High fever with chills, headache, and myalgia in a monsoon-season patient from a waterlogged area strongly suggests falciparum malaria.\",\n  \"next_steps\": [\n    \"Go to the nearest PHC or CHC immediately for a rapid malaria test (RDT).\",\n    \"Do not take any medicines before the test.\",\n    \"Use a mosquito net tonight.\",\n    \"Drink plenty of fluids (ORS if available).\"\n  ],\n  \"urgency\": \"high\"\n}"
+  },
+  {
+    "user": "[Symptoms / Complaint]\nChild, age 3. Watery diarrhoea 6–7 times today, vomiting twice. Eyes look sunken. Very thirsty. Rural Bihar.",
+    "assistant": "{\n  \"diagnosis\": \"Acute Gastroenteritis with moderate dehydration\",\n  \"confidence\": 85,\n  \"reasoning\": \"Frequent watery stools, vomiting, sunken eyes, and excessive thirst in a young child indicate acute dehydration requiring urgent rehydration.\",\n  \"next_steps\": [\n    \"Start ORS (Oral Rehydration Solution) immediately — give small sips every few minutes.\",\n    \"If ORS sachet unavailable: mix 1 litre water + 6 teaspoons sugar + ½ teaspoon salt.\",\n    \"Take the child to the nearest hospital TODAY — young children dehydrate very fast.\",\n    \"Continue breastfeeding if the child is breastfed.\"\n  ],\n  \"urgency\": \"high\"\n}"
+  },
+  {
+    "user": "[Symptoms / Complaint]\nAdult male, 35 years. Mild cough for 2 weeks, slight fever in evenings, lost about 3 kg weight. Smokes. Madhya Pradesh.",
+    "assistant": "{\n  \"diagnosis\": \"Pulmonary Tuberculosis (suspected)\",\n  \"confidence\": 65,\n  \"reasoning\": \"Persistent cough > 2 weeks, evening low-grade fever, and unexplained weight loss in a smoker from a TB-endemic region warrants immediate TB screening.\",\n  \"next_steps\": [\n    \"Visit the nearest government health centre and ask for a free sputum test (DOTS programme).\",\n    \"Do not delay — TB is curable if detected early.\",\n    \"Avoid close contact with young children and elderly until test results are known.\",\n    \"Stop smoking — it worsens lung infections.\"\n  ],\n  \"urgency\": \"medium\"\n}"
+  }
+]
