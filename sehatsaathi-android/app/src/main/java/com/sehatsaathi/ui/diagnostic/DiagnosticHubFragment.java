@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.sehatsaathi.R;
+import com.sehatsaathi.network.LocalRagEngine;
 import com.sehatsaathi.network.RagModels;
 import com.sehatsaathi.network.RetrofitClient;
 
@@ -93,23 +94,12 @@ public class DiagnosticHubFragment extends Fragment {
 
                             if (response.isSuccessful() && response.body() != null) {
                                 RagModels.ChatResponse ragResponse = response.body();
-
-                                // Store session data and advance to symptom clarification
-                                if (getActivity() instanceof DiagnosticMainActivity) {
-                                    DiagnosticMainActivity activity = (DiagnosticMainActivity) getActivity();
-                                    activity.setPatientId(patientId);
-                                    activity.setSymptomText(symptomText);
-                                    activity.addToHistory("user", symptomText);
-                                    activity.addToHistory("assistant", ragResponse);
-                                    activity.setFirstQuestion(ragResponse.message != null
-                                            ? ragResponse.message + "\n\n" + (ragResponse.followUpQuestion != null
-                                                ? ragResponse.followUpQuestion : "")
-                                            : "Please describe how you feel?");
-                                    activity.nextPage();
-                                }
+                                startClarification(patientId, symptomText, ragResponse);
                             } else {
+                                RagModels.ChatResponse localResponse = LocalRagEngine.initialResponse(symptomText);
                                 Toast.makeText(getContext(),
-                                        "RAG API error. Check server connection.", Toast.LENGTH_LONG).show();
+                                        "Server unavailable. Switched to local analysis.", Toast.LENGTH_LONG).show();
+                                startClarification(patientId, symptomText, localResponse);
                             }
                         });
                     }
@@ -120,8 +110,10 @@ public class DiagnosticHubFragment extends Fragment {
                         getActivity().runOnUiThread(() -> {
                             btnStart.setEnabled(true);
                             btnStart.setText("Start SehatSaathi Analysis  ⚡");
+                            RagModels.ChatResponse localResponse = LocalRagEngine.initialResponse(symptomText);
                             Toast.makeText(getContext(),
-                                    "Cannot reach server: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                                    "Cannot reach server. Running local analysis.", Toast.LENGTH_LONG).show();
+                            startClarification(patientId, symptomText, localResponse);
                         });
                     }
                 });
@@ -129,5 +121,20 @@ public class DiagnosticHubFragment extends Fragment {
         }
 
         return view;
+    }
+
+    private void startClarification(String patientId, String symptomText, RagModels.ChatResponse ragResponse) {
+        if (!(getActivity() instanceof DiagnosticMainActivity)) return;
+
+        DiagnosticMainActivity activity = (DiagnosticMainActivity) getActivity();
+        activity.setPatientId(patientId);
+        activity.setSymptomText(symptomText);
+        activity.addToHistory("user", symptomText);
+        activity.addToHistory("assistant", ragResponse);
+        activity.setFirstQuestion(ragResponse.message != null
+                ? ragResponse.message + "\n\n" + (ragResponse.followUpQuestion != null
+                ? ragResponse.followUpQuestion : "Please answer the next clinical question.")
+                : "Please describe how you feel?");
+        activity.nextPage();
     }
 }

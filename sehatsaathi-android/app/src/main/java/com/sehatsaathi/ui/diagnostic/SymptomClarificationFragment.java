@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.sehatsaathi.network.LocalRagEngine;
 import com.sehatsaathi.R;
 import com.sehatsaathi.network.RagModels;
 import com.sehatsaathi.network.RetrofitClient;
@@ -128,25 +129,14 @@ public class SymptomClarificationFragment extends Fragment {
                     if (btnProceed != null)    btnProceed.setEnabled(true);
 
                     if (response.isSuccessful() && response.body() != null) {
-                        RagModels.ChatResponse ragResponse = response.body();
-                        activity.addToHistory("assistant", ragResponse);
-                        activity.setLastResponse(ragResponse);
-
-                        if ("diagnosed".equals(ragResponse.status)) {
-                            // Final diagnosis received — go to summary
-                            activity.goToSummary(ragResponse);
-                        } else {
-                            // More follow-up needed — show next question
-                            selectedAnswer = null;
-                            if (btnYes != null)   btnYes.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
-                            if (btnNo != null)    btnNo.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
-                            if (btnUnsure != null) btnUnsure.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
-
-                            String nextQ = ragResponse.message != null ? ragResponse.message : "Any other symptoms?";
-                            if (tvQuestion != null) tvQuestion.setText(nextQ);
-                        }
+                        handleChatResponse(activity, response.body());
                     } else {
-                        Toast.makeText(getContext(), "Server error. Try again.", Toast.LENGTH_LONG).show();
+                        RagModels.ChatResponse localResponse = LocalRagEngine.nextResponse(
+                                activity.getSymptomText(),
+                                activity.getConversationHistory()
+                        );
+                        Toast.makeText(getContext(), "Server error. Continuing local analysis.", Toast.LENGTH_LONG).show();
+                        handleChatResponse(activity, localResponse);
                     }
                 });
             }
@@ -157,9 +147,35 @@ public class SymptomClarificationFragment extends Fragment {
                 getActivity().runOnUiThread(() -> {
                     if (loadingLayout != null) loadingLayout.setVisibility(View.GONE);
                     if (btnProceed != null)    btnProceed.setEnabled(true);
-                    Toast.makeText(getContext(), "Network error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                    RagModels.ChatResponse localResponse = LocalRagEngine.nextResponse(
+                            activity.getSymptomText(),
+                            activity.getConversationHistory()
+                    );
+                    Toast.makeText(getContext(), "Network error. Continuing local analysis.", Toast.LENGTH_LONG).show();
+                    handleChatResponse(activity, localResponse);
                 });
             }
         });
+    }
+
+    private void handleChatResponse(DiagnosticMainActivity activity, RagModels.ChatResponse ragResponse) {
+        activity.addToHistory("assistant", ragResponse);
+        activity.setLastResponse(ragResponse);
+
+        if ("diagnosed".equals(ragResponse.status)) {
+            activity.goToSummary(ragResponse);
+            return;
+        }
+
+        selectedAnswer = null;
+        if (btnYes != null) btnYes.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
+        if (btnNo != null) btnNo.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
+        if (btnUnsure != null) btnUnsure.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
+
+        String nextQ = ragResponse.message != null ? ragResponse.message : "Any other symptoms?";
+        if (ragResponse.followUpQuestion != null && !ragResponse.followUpQuestion.isEmpty()) {
+            nextQ = nextQ + "\n\n" + ragResponse.followUpQuestion;
+        }
+        if (tvQuestion != null) tvQuestion.setText(nextQ);
     }
 }
