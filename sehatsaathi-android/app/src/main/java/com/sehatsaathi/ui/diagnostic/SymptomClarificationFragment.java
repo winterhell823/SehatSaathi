@@ -28,6 +28,7 @@ public class SymptomClarificationFragment extends Fragment {
     private Button btnYes, btnNo, btnUnsure, btnProceed;
     private LinearLayout loadingLayout;
     private String selectedAnswer = null;
+    private boolean isSubmitting = false;
 
     @Nullable
     @Override
@@ -72,6 +73,8 @@ public class SymptomClarificationFragment extends Fragment {
 
         // Answer buttons
         View.OnClickListener answerListener = v -> {
+            if (isSubmitting) return;
+
             selectedAnswer = null;
             if (v.getId() == R.id.btnQ1Yes)   selectedAnswer = "Yes";
             else if (v.getId() == R.id.btnQ1No)    selectedAnswer = "No";
@@ -83,6 +86,9 @@ public class SymptomClarificationFragment extends Fragment {
             if (btnUnsure != null) btnUnsure.setBackgroundResource(R.drawable.bg_diag_selection_inactive);
             v.setBackgroundResource(R.drawable.bg_diag_selection_active);
             if (btnProceed != null) btnProceed.setEnabled(true);
+
+            // Treat option tap as the response to speed up the follow-up flow.
+            sendAnswerToRag(selectedAnswer);
         };
 
         if (btnYes != null)    btnYes.setOnClickListener(answerListener);
@@ -109,7 +115,9 @@ public class SymptomClarificationFragment extends Fragment {
 
     private void sendAnswerToRag(String answer) {
         if (!(getActivity() instanceof DiagnosticMainActivity)) return;
+        if (isSubmitting) return;
         DiagnosticMainActivity activity = (DiagnosticMainActivity) getActivity();
+        isSubmitting = true;
 
         // Show loading
         if (loadingLayout != null) loadingLayout.setVisibility(View.VISIBLE);
@@ -131,6 +139,7 @@ public class SymptomClarificationFragment extends Fragment {
                 getActivity().runOnUiThread(() -> {
                     if (loadingLayout != null) loadingLayout.setVisibility(View.GONE);
                     setAnswerButtonsEnabled(true);
+                    isSubmitting = false;
 
                     if (response.isSuccessful() && response.body() != null) {
                         activity.addToHistory("user", answer);
@@ -153,6 +162,7 @@ public class SymptomClarificationFragment extends Fragment {
                 getActivity().runOnUiThread(() -> {
                     if (loadingLayout != null) loadingLayout.setVisibility(View.GONE);
                     setAnswerButtonsEnabled(true);
+                    isSubmitting = false;
                     activity.addToHistory("user", answer);
                     RagModels.ChatResponse localResponse = LocalRagEngine.nextResponse(
                             activity.getSymptomText(),
