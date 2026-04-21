@@ -31,9 +31,7 @@ public class DiagnosisActivity extends AppCompatActivity {
 
         runDiagnosticEngine();
 
-        findViewById(R.id.btnSaveSync).setOnClickListener(v -> {
-            saveDiagnosisRecord();
-        });
+        // Removed btnSaveSync block
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
         bottomNav.setSelectedItemId(R.id.nav_tools);

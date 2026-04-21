@@ -15,15 +15,9 @@ public class VisionAIDiagnosisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vision_ai);
 
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
-
-        findViewById(R.id.btnAnalyze).setOnClickListener(v -> {
-            String patientName = getIntent().getStringExtra("PATIENT_NAME");
-            if (patientName == null || patientName.isEmpty()) patientName = "Unknown Patient";
-
-            // Navigate to Diagnosis Result screen
+        findViewById(R.id.btnProceed).setOnClickListener(v -> {
+            // Navigate to Final Diagnosis Result screen
             Intent intent = new Intent(this, DiagnosisActivity.class);
-            intent.putExtra("PATIENT_NAME", patientName);
             startActivity(intent);
         });
 

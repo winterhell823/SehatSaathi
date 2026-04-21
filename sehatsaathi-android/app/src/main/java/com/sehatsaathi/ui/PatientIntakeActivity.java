@@ -26,40 +26,9 @@ public class PatientIntakeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_intake);
 
-        btnMale = findViewById(R.id.btnMale);
-        btnFemale = findViewById(R.id.btnFemale);
-        btnOther = findViewById(R.id.btnOther);
-
-        btnMale.setOnClickListener(v -> selectGender("Male"));
-        btnFemale.setOnClickListener(v -> selectGender("Female"));
-        btnOther.setOnClickListener(v -> selectGender("Other"));
-
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
-
-        findViewById(R.id.btnNext).setOnClickListener(v -> {
-            String name = ((EditText) findViewById(R.id.etFullName)).getText().toString().trim();
-            if (name.isEmpty()) {
-                Toast.makeText(this, "Please enter patient name", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            
-            // Check internet connection
-            ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo activeNetwork = cm != null ? cm.getActiveNetworkInfo() : null;
-            boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
-            
-            if (isConnected) {
-                // Online: Go to Vision AI first (Photos feature)
-                Intent intent = new Intent(this, VisionAIDiagnosisActivity.class);
-                intent.putExtra("PATIENT_NAME", name);
-                startActivity(intent);
-            } else {
-                // Offline: Skip photos, go straight to Diagnosis (Follow-up questions only)
-                Toast.makeText(this, "Offline Mode: Jumping to Questionnaire", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, DiagnosticMainActivity.class);
-                intent.putExtra("PATIENT_NAME", name);
-                startActivity(intent);
-            }
+        findViewById(R.id.btnStart).setOnClickListener(v -> {
+            // Jump to the Symptom Clarification screen
+            startActivity(new Intent(this, VisionAIDiagnosisActivity.class));
         });
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
@@ -84,15 +53,4 @@ public class PatientIntakeActivity extends AppCompatActivity {
         });
     }
 
-    private void selectGender(String gender) {
-        selectedGender = gender;
-        btnMale.setBackgroundResource(gender.equals("Male") ? R.drawable.bg_gender_selected : R.drawable.bg_gender_unselected);
-        btnMale.setTextColor(gender.equals("Male") ? 0xFFFFFFFF : 0xFF5D4037);
-
-        btnFemale.setBackgroundResource(gender.equals("Female") ? R.drawable.bg_gender_selected : R.drawable.bg_gender_unselected);
-        btnFemale.setTextColor(gender.equals("Female") ? 0xFFFFFFFF : 0xFF5D4037);
-
-        btnOther.setBackgroundResource(gender.equals("Other") ? R.drawable.bg_gender_selected : R.drawable.bg_gender_unselected);
-        btnOther.setTextColor(gender.equals("Other") ? 0xFFFFFFFF : 0xFF5D4037);
-    }
 }
