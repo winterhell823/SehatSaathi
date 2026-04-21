@@ -38,11 +38,11 @@
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Has the fever lasted more than 3 days?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="6dp"/>
             <Space android:layout_width="match_parent" android:layout_height="12dp" />
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_active" android:textColor="@android:color/white" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ1Yes" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
                 <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ1No" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
                 <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Unsure" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ1Unsure" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Unsure" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -52,11 +52,11 @@
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Are there any skin rashes or visible irritations?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="6dp"/>
             <Space android:layout_width="match_parent" android:layout_height="12dp" />
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ2Yes" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
                 <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ2No" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
                 <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Unsure" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ2Unsure" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Unsure" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -66,9 +66,9 @@
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Experience difficulty breathing while resting?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="6dp"/>
             <Space android:layout_width="match_parent" android:layout_height="12dp" />
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ3Yes" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
                 <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ3No" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
             </LinearLayout>
         </LinearLayout>
         
@@ -78,9 +78,9 @@
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Have you noticed sudden severe headaches?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="6dp"/>
             <Space android:layout_width="match_parent" android:layout_height="12dp" />
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_active" android:textColor="@android:color/white" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ4Yes" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
                 <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ4No" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -90,11 +90,11 @@
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Is there a significant loss of appetite?" android:textColor="@color/diag_text_dark" android:textStyle="bold" android:textSize="14sp" android:layout_marginTop="6dp"/>
             <Space android:layout_width="match_parent" android:layout_height="12dp" />
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ5Yes" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Yes" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
                 <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ5No" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="No" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
                 <Space android:layout_width="8dp" android:layout_height="wrap_content" />
-                <Button android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Unsure" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
+                <Button android:id="@+id/btnQ5Unsure" android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1" android:text="Unsure" android:background="@drawable/bg_diag_selection_inactive" android:textColor="@color/diag_text_gray" android:textSize="12sp" android:textAllCaps="false" app:cornerRadius="8dp" />
             </LinearLayout>
         </LinearLayout>
         
