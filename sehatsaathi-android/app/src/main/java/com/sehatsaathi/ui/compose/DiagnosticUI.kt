@@ -36,23 +36,43 @@ val LightTealTint = Color(0xFFE8F5F0)
 
 @Composable
 fun MainDiagnosticScreen() {
+    var selectedNavIndex by remember { mutableStateOf(0) }
     val pagerState = rememberPagerState(pageCount = { 3 })
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
-        bottomBar = { AppBottomNavigationBar() },
+        bottomBar = { AppBottomNavigationBar(selectedNavIndex) { selectedNavIndex = it } },
         containerColor = BgColor
     ) { paddingValues ->
-        HorizontalPager(
-            state = pagerState,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues)
-        ) { page ->
-            when (page) {
-                0 -> DiagnosticHubScreen()
-                1 -> SymptomClarificationScreen()
-                2 -> DiagnosticSummaryScreen()
+        when (selectedNavIndex) {
+            0 -> {
+                HorizontalPager(
+                    state = pagerState,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(paddingValues)
+                ) { page ->
+                    when (page) {
+                        0 -> DiagnosticHubScreen()
+                        1 -> SymptomClarificationScreen()
+                        2 -> DiagnosticSummaryScreen()
+                    }
+                }
+            }
+            1 -> {
+                Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
+                    Text("Records Screen", color = TextDark, fontSize = 20.sp)
+                }
+            }
+            2 -> {
+                Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
+                    Text("VitalAI Screen", color = TextDark, fontSize = 20.sp)
+                }
+            }
+            3 -> {
+                Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
+                    Text("Settings Screen", color = TextDark, fontSize = 20.sp)
+                }
             }
         }
     }
@@ -444,36 +464,61 @@ fun TreatmentCard(title: String, desc: String, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun AppBottomNavigationBar() {
+fun AppBottomNavigationBar(selectedIndex: Int, onNavigate: (Int) -> Unit) {
     NavigationBar(
         containerColor = Color.White,
         modifier = Modifier.border(1.dp, GrayBorder)
     ) {
         NavigationBarItem(
-            icon = { Icon(Icons.Default.Home, contentDescription = "Home") },
-            selected = false,
-            onClick = { },
+            icon = { Icon(Icons.Default.Home, contentDescription = "Diagnostics") },
+            label = { Text("Diagnostics", fontSize = 10.sp) },
+            selected = selectedIndex == 0,
+            onClick = { onNavigate(0) },
             colors = NavigationBarItemDefaults.colors(
                 unselectedIconColor = LightGrayHint,
-                selectedIconColor = SecondaryAccent
+                unselectedTextColor = LightGrayHint,
+                selectedIconColor = SecondaryAccent,
+                selectedTextColor = SecondaryAccent,
+                indicatorColor = Color.Transparent
             )
         )
         NavigationBarItem(
-            icon = { Icon(Icons.Default.Search, contentDescription = "Search") },
-            selected = true,
-            onClick = { },
+            icon = { Icon(Icons.Default.List, contentDescription = "Records") },
+            label = { Text("Records", fontSize = 10.sp) },
+            selected = selectedIndex == 1,
+            onClick = { onNavigate(1) },
             colors = NavigationBarItemDefaults.colors(
                 unselectedIconColor = LightGrayHint,
-                selectedIconColor = SecondaryAccent
+                unselectedTextColor = LightGrayHint,
+                selectedIconColor = SecondaryAccent,
+                selectedTextColor = SecondaryAccent,
+                indicatorColor = Color.Transparent
             )
         )
         NavigationBarItem(
-            icon = { Icon(Icons.Default.Person, contentDescription = "Profile") },
-            selected = false,
-            onClick = { },
+            icon = { Icon(Icons.Default.LocationOn, contentDescription = "VitalAI") },
+            label = { Text("VitalAI", fontSize = 10.sp) },
+            selected = selectedIndex == 2,
+            onClick = { onNavigate(2) },
             colors = NavigationBarItemDefaults.colors(
                 unselectedIconColor = LightGrayHint,
-                selectedIconColor = SecondaryAccent
+                unselectedTextColor = LightGrayHint,
+                selectedIconColor = SecondaryAccent,
+                selectedTextColor = SecondaryAccent,
+                indicatorColor = Color.Transparent
+            )
+        )
+        NavigationBarItem(
+            icon = { Icon(Icons.Default.Settings, contentDescription = "Settings") },
+            label = { Text("Settings", fontSize = 10.sp) },
+            selected = selectedIndex == 3,
+            onClick = { onNavigate(3) },
+            colors = NavigationBarItemDefaults.colors(
+                unselectedIconColor = LightGrayHint,
+                unselectedTextColor = LightGrayHint,
+                selectedIconColor = SecondaryAccent,
+                selectedTextColor = SecondaryAccent,
+                indicatorColor = Color.Transparent
             )
         )
     }
